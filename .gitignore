@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+._*
+
+# editors
+.vscode/
+.idea/
+*.swp
+
+# logs / scratch
+*.log
+.cache/
+
+# build scratch / worker output / preview shots
+.preview/
