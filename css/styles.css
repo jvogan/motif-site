@@ -336,6 +336,17 @@ figcaption { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-4); 
 .code .c { color: #9A8A72; } .code .p { color: #E39A72; } .code .s { color: #A9C08E; } .code .k { color: #E7D8C4; }
 @media (max-width: 780px) { .tabpanel.is-active { grid-template-columns: 1fr; } }
 
+/* setup-help FAQ (native disclosure, no JS) */
+.faq { max-width: 47rem; margin: clamp(1.8rem, 4vw, 2.6rem) 0 0; display: grid; gap: 0.65rem; }
+.faq__item { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); transition: border-color 0.2s var(--ease); }
+.faq__item[open] { border-color: var(--line-strong); }
+.faq__item summary { cursor: pointer; list-style: none; padding: 0.95rem 1.15rem; font-family: var(--sans); font-weight: 600; font-size: 1rem; color: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after { content: "+"; font-family: var(--mono); font-weight: 400; color: var(--clay); font-size: 1.25rem; line-height: 1; flex: none; }
+.faq__item[open] summary::after { content: "\2212"; }
+.faq__body { padding: 0 1.15rem 1.05rem; color: var(--ink-2); font-size: 0.97rem; line-height: 1.6; max-width: 44rem; }
+.faq__body .mono { font-family: var(--mono); font-size: 0.9em; color: var(--ink); }
+
 /* ---------- boundaries ---------- */
 .honesty { background: var(--parchment); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(1.7rem, 4vw, 3rem); }
 .honesty__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-top: 1.8rem; }

@@ -488,14 +488,18 @@ open <span class="s">motif-artifact.html</span>
 
       <div class="tabpanel" role="tabpanel" id="tp-2" aria-labelledby="tb-2" hidden>
         <div class="tabpanel__copy">
-          <h3>Install the plugin</h3>
-          <p>Point Claude Science at Motif and it gains the bench as a tool it can open, read, and reason over during a session.</p>
-          <a class="btn btn--ghost" href="https://github.com/jvogan/motif#readme">Setup guide</a>
+          <h3>Get it running in Claude Science</h3>
+          <p>Motif runs from a local checkout, so setup is a few terminal commands (Node&nbsp;22.12+). Clone the repo, build the connector, then grant Claude Science read access to that folder and relaunch it.</p>
+          <p>Rather not touch a terminal? Hand these steps to a coding agent like <strong>Claude&nbsp;Code</strong>. It can clone, build, register the connector, and run the health check, so all you do is grant Motif's folder in Claude Science and relaunch.</p>
+          <a class="btn btn--ghost" href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_QUICKSTART.md">Full setup guide</a>
         </div>
-        <pre class="code"><span class="c"># register the local connector (from the plugin repo)</span>
+        <pre class="code"><span class="c"># 1 · get the code (needs Node 22.12+)</span>
+git clone <span class="s">https://github.com/jvogan/motif</span>
+cd motif &amp;&amp; npm ci
+<span class="c"># 2 · build + register the local connector</span>
 npm run <span class="p">claude-science:setup</span>
-<span class="c"># then, in the conversation</span>
-<span class="p">"Open pUC19 and screen the unique cutters."</span></pre>
+<span class="c"># 3 · in Claude Science: grant this folder,</span>
+<span class="c">#    fully quit + reopen, then reconnect "motif-local"</span></pre>
       </div>
 
       <div class="tabpanel" role="tabpanel" id="tp-3" aria-labelledby="tb-3" hidden>
@@ -509,6 +513,39 @@ window.<span class="k">motifGetActiveRecord</span>()
 <span class="c">// prepare derived records</span>
 window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SETUP HELP (FAQ) ============================ -->
+<section class="section section--tight" id="setup-help" aria-labelledby="sh-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">If setup gets stuck</span>
+      <h2 id="sh-h">Common snags, and the honest fix.</h2>
+      <p class="lead">Motif is local-first, so most snags come down to Claude Science's sandbox reaching your files, not Motif's behavior. The full <a href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_TROUBLESHOOTING.md">troubleshooting guide</a> covers each case in depth.</p>
+    </div>
+    <div class="faq reveal">
+      <details class="faq__item">
+        <summary>“Operation not permitted,” or the tools won't load</summary>
+        <div class="faq__body">This is Claude Science's sandbox denying the folder, not a file-permission error. Grant the exact Motif folder under Customize → Permissions, then fully quit and reopen Claude Science. Pressing Reconnect on its own won't apply a new grant.</div>
+      </details>
+      <details class="faq__item">
+        <summary>The tool ran, but no workbench appeared</summary>
+        <div class="faq__body">A text summary or resource link proves the tool ran, not that a visible frame mounted. Ask for the generated HTML workbench; it opens as an interactive snapshot in the right pane. Whether Claude Science mounts the live tile automatically depends on your host build.</div>
+      </details>
+      <details class="faq__item">
+        <summary>The sequence shows as plain text, not the viewer</summary>
+        <div class="faq__body">The message <span class="mono">Sequence viewer unavailable—showing as text</span> is Claude Science's generic fallback; it doesn't mean Motif rejected the sequence. Open the generated workbench artifact to see it rendered.</div>
+      </details>
+      <details class="faq__item">
+        <summary>The connector shows up, but its tools are missing</summary>
+        <div class="faq__body">Rebuild and reconnect the existing <span class="mono">motif-local</span> entry rather than adding a second one. If a tool's inputs or schema changed, also relaunch Claude Science and start a fresh kernel so the new definition loads.</div>
+      </details>
+      <details class="faq__item">
+        <summary>Node installed through nvm or asdf gets denied</summary>
+        <div class="faq__body">The sandbox may not reach a Node binary inside a version manager. Prefer a system or Homebrew Node 22.12+. If you keep a version-managed Node, grant its exact folder and rerun setup pointing Motif at that Node binary (the full guide shows the exact command).</div>
+      </details>
     </div>
   </div>
 </section>
