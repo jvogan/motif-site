@@ -359,7 +359,7 @@ figcaption { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-4); 
 .claim li { list-style: none; font-size: 0.93rem; color: var(--ink-2); padding-left: 1.3rem; position: relative; }
 .claim li::before { position: absolute; left: 0; top: 0.05em; font-family: var(--mono); }
 .claim--do li::before { content: "✓"; color: var(--sage-deep); }
-.claim--dont li::before { content: "−"; color: var(--clay); }
+.claim--dont li::before { content: "→"; color: var(--clay); }
 @media (max-width: 700px) { .honesty__grid { grid-template-columns: 1fr; } }
 
 /* ---------- closer ---------- */
