@@ -269,6 +269,13 @@ figcaption { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-4); 
 .callout h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
 .callout p { margin: 0; color: var(--ink-2); }
 
+/* Cloning & maps: full-width real screenshot + capability row */
+.cloning-window { max-width: 60rem; margin: clamp(1.8rem, 4vw, 2.6rem) auto 0; }
+.cloning-window .screenshot-window__image { aspect-ratio: auto; }
+.cloning-window .screenshot-window__image img { height: auto; }
+.cloning-list { max-width: 60rem; margin: 1.6rem auto 0; grid-template-columns: repeat(3, 1fr); gap: 1.2rem 1.6rem; }
+@media (max-width: 700px) { .cloning-list { grid-template-columns: 1fr; } }
+
 @media (max-width: 760px) { .screenshot-grid { grid-template-columns: 1fr; } }
 @media (max-width: 840px) { .band { grid-template-columns: 1fr; gap: 2rem; } .band--flip .band__media { order: 0; } .band__copy { max-width: none; } }
 

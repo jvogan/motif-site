@@ -276,7 +276,8 @@
 </section>
 
 <!-- ============================ BAND: prompt to result ============================ -->
-<section class="section band" aria-labelledby="b1">
+<section class="section" aria-labelledby="b1">
+  <div class="container band">
   <div class="band__media reveal">
     <figure class="figure figure--flow">
       <img class="flow__frame" src="assets/banners/03b-workspace.webp" width="1050" height="530"
@@ -298,22 +299,26 @@
       <li>Each record carries its own sequence and coordinates</li>
     </ul>
   </div>
+  </div>
 </section>
 
 <!-- ============================ BAND: restriction cartography (flipped) ============================ -->
-<section class="section band band--flip bg-parchment" aria-labelledby="b2">
-  <div class="band__media reveal">
-    <figure class="figure">
-      <img src="assets/banners/06-restriction-cartography.webp" width="1800" height="600"
-           alt="A compact enzyme-library panel on the left and a large circular plasmid map covered in fine restriction ticks on the right, with one Type IIS site marked by a coral notch and a precise callout." loading="lazy" />
-      <figcaption>Restriction map · 153 enzymes, unique cutters, Type IIS flags</figcaption>
+<section class="section bg-parchment" aria-labelledby="b2">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cloning &amp; maps</span>
+      <h2 id="b2">Plan a construct before you build it.</h2>
+      <p class="lead">Screen a plasmid against 153 built-in restriction enzymes, isolate the unique cutters, preview the digest geometry, and plan Gibson or Golden&nbsp;Gate assemblies, with internal Type&nbsp;IIS sites flagged during assembly planning.</p>
+    </div>
+    <figure class="figure screenshot-window reveal cloning-window">
+      <div class="screenshot-window__bar" aria-hidden="true"></div>
+      <div class="screenshot-window__image">
+        <img src="assets/shots/claude-science-restriction-digest.webp" width="1558" height="1398" loading="lazy"
+             alt="The Motif workbench on a real 11,429 bp record: named restriction sites (HpaII/MspI, TaqI, HaeIII, AluI, XhoI) marked on the sequence, a linear map covered in restriction ticks with the crtE feature, and a digest preview reading 13 cuts and 14 fragments across 292 sites and 34 enzymes." />
+      </div>
+      <figcaption>crtE (DQ012943) · 292/292 sites, 34 enzymes · digest preview 13 cuts, 14 fragments</figcaption>
     </figure>
-  </div>
-  <div class="band__copy reveal" data-delay="1">
-    <span class="eyebrow">Cloning &amp; maps</span>
-    <h2 id="b2">Plan a construct before you build it.</h2>
-    <p>Screen a plasmid against 153 built-in restriction enzymes, isolate the unique cutters, preview the digest geometry, and plan Gibson or Golden&nbsp;Gate assemblies, with internal Type&nbsp;IIS sites flagged during assembly planning.</p>
-    <ul class="band__list">
+    <ul class="band__list cloning-list reveal" data-delay="1">
       <li>Restriction digest with fragment sizes and cut positions</li>
       <li>Primer design with Tm / GC tuning and enzyme-tail presets</li>
       <li>Gibson &amp; Golden Gate planning with compatible-overhang checks</li>
@@ -322,7 +327,8 @@
 </section>
 
 <!-- ============================ BAND: sequence to protein (live codon widget) ============================ -->
-<section class="section band" aria-labelledby="b3">
+<section class="section" aria-labelledby="b3">
+  <div class="container band">
   <div class="band__media reveal">
     <div class="viz viz--codons" id="codon-strip">
       <figure class="figure viz__fallback">
@@ -341,6 +347,7 @@
       <li>Needleman-Wunsch pairwise alignment and IUPAC motif search</li>
       <li>Translation, reverse complement, and reverse translation</li>
     </ul>
+  </div>
   </div>
 </section>
 
