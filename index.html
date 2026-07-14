@@ -552,6 +552,74 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
   </div>
 </section>
 
+<!-- ============================ FROM A PAPER (walkthrough) ============================ -->
+<section class="section section--tight bg-parchment" id="from-paper" aria-labelledby="fp-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> A request, end to end</span>
+      <h2 id="fp-h">One request opens a paper's genes in Motif.</h2>
+      <p class="lead">Point Claude Science at a paper and ask for its genes in Motif. It reads the paper, fetches the GenBank records from NCBI, and opens them in the workbench.</p>
+    </div>
+    <ol class="session">
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">01</span>
+          <div class="session__caption">
+            <h3>Ask in plain language</h3>
+            <p>Paste a paper and ask Claude Science to open its genes in Motif.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-ask-paper.webp" width="1351" height="388" loading="lazy"
+                 alt="A Claude Science prompt asking it to open the genes characterized in a PLOS ONE paper in Motif." />
+          </div>
+          <figcaption>PLOS ONE · 10.1371/journal.pone.0096626</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">02</span>
+          <div class="session__caption">
+            <h3>Claude curates and fetches</h3>
+            <p>It reads the paper, identifies the two characterized genes, FPS and crtE, and fetches their full GenBank records from NCBI with annotations.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-curate-genes.webp" width="1540" height="1597" loading="lazy"
+                 alt="Claude Science listing FPS (KJ140284.1) and crtE (DQ012943.1) with their enzymes and lengths, and reporting the workbench opened with 2 records and 14,314 residues." />
+          </div>
+          <figcaption>FPS KJ140284.1 · crtE DQ012943.1 · 2 records, 14,314 residues</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">03</span>
+          <div class="session__caption">
+            <h3>Open in the Motif viewer</h3>
+            <p>The records open in the workbench. Inventory holds both genes; Sequence and Map show the selected one, with restriction sites and gene, mRNA, and CDS features.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-motif-viewer.webp" width="2000" height="1063" loading="lazy"
+                 alt="The Motif workbench open in Claude Science's right pane: the crtE record (DQ012943), its sequence with restriction sites, and an 11,429 bp linear map." />
+          </div>
+          <figcaption>motif_FPS_crtE.html · Inventory · Sequence · Map</figcaption>
+        </figure>
+      </li>
+    </ol>
+    <div class="callout reveal">
+      <h3>If the workbench does not open in the viewer</h3>
+      <p>Claude Science sometimes finishes by saving the workbench without opening it. Ask it to open the records in the Motif viewer, or include that in your first prompt.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ SETUP HELP (FAQ) ============================ -->
 <section class="section section--tight" id="setup-help" aria-labelledby="sh-h">
   <div class="container">

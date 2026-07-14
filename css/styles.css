@@ -264,6 +264,11 @@ figcaption { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-4); 
 .connect__note { color: var(--ink-2); max-width: 44rem; }
 .connect__note strong { color: var(--ink); font-weight: 600; }
 
+/* Important-note callout */
+.callout { max-width: 62rem; margin: clamp(2rem, 5vw, 3rem) auto 0; padding: clamp(1.1rem, 2.5vw, 1.5rem) clamp(1.2rem, 3vw, 1.7rem); background: rgba(192, 96, 60, 0.06); border: 1px solid var(--line); border-left: 3px solid var(--clay); border-radius: var(--radius); }
+.callout h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+.callout p { margin: 0; color: var(--ink-2); }
+
 @media (max-width: 760px) { .screenshot-grid { grid-template-columns: 1fr; } }
 @media (max-width: 840px) { .band { grid-template-columns: 1fr; gap: 2rem; } .band--flip .band__media { order: 0; } .band__copy { max-width: none; } }
 
