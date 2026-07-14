@@ -556,9 +556,9 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
 <section class="section section--tight bg-parchment" id="from-paper" aria-labelledby="fp-h">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> A request, end to end</span>
-      <h2 id="fp-h">One request opens a paper's genes in Motif.</h2>
-      <p class="lead">Point Claude Science at a paper and ask for its genes in Motif. It reads the paper, fetches the GenBank records from NCBI, and opens them in the workbench.</p>
+      <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> One session, end to end</span>
+      <h2 id="fp-h">From a paper to a Motif alignment.</h2>
+      <p class="lead">Point Claude Science at a paper and ask for its genes. It fetches the records into Motif, then keeps going as you ask for more homologs and a multiple sequence alignment.</p>
     </div>
     <ol class="session">
       <li class="session__step reveal">
@@ -627,6 +627,23 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
                  alt="The Motif workbench grown to six records after a follow-up request: the two paper genes as DNA plus four UniProt protein homologs (BTS1, crtE, ERG20, FPS)." />
           </div>
           <figcaption>6 records · 2 paper genes + 4 UniProt homologs</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">05</span>
+          <div class="session__caption">
+            <h3>Align and read it in Motif</h3>
+            <p>Ask for a multiple sequence alignment. Claude Science installs Clustal Omega, aligns the six proteins, and loads the CLUSTAL result into Motif's MSA viewer.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-msa-result.webp" width="2000" height="1142" loading="lazy"
+                 alt="Motif's MSA viewer showing a six-protein Clustal Omega alignment: 6 rows, 440 columns, with per-row identity, consensus, and conserved-column shading." />
+          </div>
+          <figcaption>6 rows · 440 columns · Clustal Omega 1.2.4</figcaption>
         </figure>
       </li>
     </ol>
