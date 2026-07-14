@@ -2,7 +2,7 @@
   "use strict";
 
   const NS = "http://www.w3.org/2000/svg";
-  const TOTAL_BP = 2578;
+  const TOTAL_BP = 2686;
   const CENTER = 320;
   const RING_RADIUS = 184;
   const FEATURE_RADIUS = 158;
@@ -10,20 +10,25 @@
   let instanceCount = 0;
 
   const FEATURES = [
-    { id: "amp", name: "AmpR (bla)", short: "AmpR (bla)", start: 1630, end: 2490, color: "#C0603C", deep: "#A6482A", strand: "reverse (−)", label: [72, 256], anchor: "start" },
-    { id: "lacz", name: "lacZα", short: "lacZα", start: 150, end: 470, color: "#6E90AE", deep: "#4D6E8C", strand: "reverse (−)", label: [518, 102], anchor: "start" },
-    { id: "ori", name: "pMB1 ori", short: "pMB1 ori", start: 880, end: 1450, color: "#7F9270", deep: "#5E7350", strand: "bidirectional", label: [506, 495], anchor: "start" },
-    { id: "mcs", name: "MCS", short: "MCS", start: 395, end: 455, color: "#C79A44", deep: "#9E762F", strand: "forward (+)", label: [554, 264], anchor: "start" }
+    { id: "amp", name: "AmpR (bla)", short: "AmpR (bla)", start: 1626, end: 2486, color: "#C0603C", deep: "#A6482A", strand: "reverse (−)", label: [72, 256], anchor: "start" },
+    { id: "lacz", name: "lacZα", short: "lacZα", start: 146, end: 469, color: "#6E90AE", deep: "#4D6E8C", strand: "reverse (−)", label: [518, 102], anchor: "start" },
+    { id: "ori", name: "pMB1 ori", short: "pMB1 ori", start: 867, end: 1455, color: "#7F9270", deep: "#5E7350", strand: "reverse (−)", label: [506, 495], anchor: "start" },
+    { id: "mcs", name: "MCS", short: "MCS", start: 396, end: 452, color: "#C79A44", deep: "#9E762F", strand: "reverse (−)", enzymes: ["EcoRI 396", "BamHI 417", "SalI 429", "PstI 439", "HindIII 447"], label: [554, 264], anchor: "start" }
   ];
 
   const SITES = [
-    { name: "NdeI", bp: 183, radius: 222 },
-    { name: "EcoRI", bp: 396, radius: 224 },
-    { name: "BamHI", bp: 417, radius: 245 },
-    { name: "SalI", bp: 429, radius: 266 },
-    { name: "PstI", bp: 439, radius: 287 },
-    { name: "HindIII", bp: 447, radius: 308 },
+    { name: "NdeI", bp: 184, radius: 222 },
     { name: "AflIII", bp: 806, radius: 222 }
+  ];
+
+  // pUC19 MCS unique cutters sit within ~7 degrees of arc, too close to label
+  // individually, so they render as ticks plus one grouped callout on the MCS feature.
+  const MCS_SITES = [
+    { name: "EcoRI", bp: 396 },
+    { name: "BamHI", bp: 417 },
+    { name: "SalI", bp: 429 },
+    { name: "PstI", bp: 439 },
+    { name: "HindIII", bp: 447 }
   ];
 
   function svgEl(tag, attrs) {
@@ -240,7 +245,7 @@
     const title = svgEl("title", { id: `${uid}-title` });
     title.textContent = "Interactive circular map of the pUC19 plasmid";
     const desc = svgEl("desc", { id: `${uid}-desc` });
-    desc.textContent = "A 2,578 base pair plasmid map. Tab to a sequence feature and press Enter to select it.";
+    desc.textContent = "A 2,686 base pair plasmid map. Tab to a sequence feature and press Enter to select it.";
     svg.append(title, desc, svgEl("rect", { class: "mpm-empty-hit", x: "0", y: "0", width: "640", height: "640" }));
 
     const orbit = svgEl("g", { class: "mpm-orbit" });
@@ -258,7 +263,7 @@
         class: major ? "mpm-major-tick" : "mpm-minor-tick",
         x1: p1.x.toFixed(2), y1: p1.y.toFixed(2), x2: p2.x.toFixed(2), y2: p2.y.toFixed(2)
       }));
-      if (major && bp <= 2000) {
+      if (major && bp <= 2500) {
         const lp = pointForBp(bp, 208);
         const label = svgEl("text", {
           class: "mpm-bp-label",
@@ -296,6 +301,13 @@
       label.textContent = `${site.name} · ${site.bp}`;
       siteLayer.appendChild(label);
     });
+    MCS_SITES.forEach((site) => {
+      const inside = pointForBp(site.bp, 177);
+      const outside = pointForBp(site.bp, 190);
+      siteLayer.appendChild(svgEl("line", {
+        class: "mpm-site-tick", x1: inside.x.toFixed(2), y1: inside.y.toFixed(2), x2: outside.x.toFixed(2), y2: outside.y.toFixed(2)
+      }));
+    });
     orbit.appendChild(siteLayer);
 
     const featureNodes = new Map();
@@ -331,6 +343,13 @@
       const labelRange = svgEl("tspan", { class: "mpm-feature-range", x: lx, dy: "12" });
       labelRange.textContent = `${feature.start}-${feature.end}`;
       label.append(labelName, labelRange);
+      if (feature.enzymes) {
+        feature.enzymes.forEach((txt) => {
+          const enzyme = svgEl("tspan", { class: "mpm-feature-range mpm-feature-enzyme", x: lx, dy: "13" });
+          enzyme.textContent = txt;
+          label.append(enzyme);
+        });
+      }
       group.append(focusPath, visualPath, leader, dot, label, hitPath);
       orbit.appendChild(group);
       featureNodes.set(feature.id, { group, visualPath, hitPath, feature });
@@ -341,7 +360,7 @@
     const kicker = svgEl("text", { class: "mpm-center-kicker", x: CENTER, y: "287", "text-anchor": "middle" });
     kicker.textContent = "CIRCULAR DNA";
     const centerTitle = svgEl("text", { class: "mpm-center-title", x: CENTER, y: "313", "text-anchor": "middle" });
-    centerTitle.textContent = "pUC19 · 2,578 bp";
+    centerTitle.textContent = "pUC19 · 2,686 bp";
     const centerRule = svgEl("line", { class: "mpm-center-rule", x1: "287", y1: "326", x2: "353", y2: "326" });
     const centerSub = svgEl("text", { class: "mpm-center-sub", x: CENTER, y: "345", "text-anchor": "middle" });
     centerSub.textContent = "ILLUSTRATIVE MAP";

@@ -94,7 +94,7 @@
       </div>
       <div class="hero__chip" aria-hidden="true">
         <i class="pulse"></i>
-        <span><span class="mono">pUC19</span> · 2,578 bp · map, sequence &amp; features in sync</span>
+        <span><span class="mono">pUC19</span> · 2,686 bp · map, sequence &amp; features in sync</span>
       </div>
     </div>
   </div>
@@ -105,8 +105,8 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Watch</span>
-      <h2 id="watch-h">See Motif work.</h2>
-      <p class="lead">A short walk through the bench: open a real record, run sequence work, and hand back results you can open and inspect.</p>
+      <h2 id="watch-h">A quick intro to Motif.</h2>
+      <p class="lead">A short overview of what Motif is. To see it actually run, <a href="assets/artifact/index.html" target="_blank" rel="noopener">open the interactive artifact</a> or <a href="#explore">explore the live map</a> below.</p>
     </div>
     <figure class="screenshot-window video-window reveal">
       <div class="screenshot-window__bar" aria-hidden="true"></div>
@@ -158,8 +158,8 @@
     <div class="lineage__track">
       <div class="thread" id="thread" aria-hidden="true"><svg preserveAspectRatio="none" viewBox="0 0 2 1000"><path id="threadPath" d="M1 0 L1 1000" /></svg></div>
       <div class="stages">
-        <div class="stage reveal"><div class="stage__node">01</div><div class="stage__body"><div class="stage__k">Source</div><h3>Bring in a real record</h3><p>Paste or import FASTA and GenBank. Motif detects the sequence type, computes GC content, finds ORFs, and maps features, so Claude starts from ground truth, not a guess.</p><span class="stage__meta">import → pUC19.gb · 2,578 bp · circular</span></div></div>
-        <div class="stage reveal"><div class="stage__node">02</div><div class="stage__body"><div class="stage__k">Inspect</div><h3>Select once, everywhere</h3><p>Click a feature on the circular map and the exact span lights up in the sequence; select bases and the map follows. Restriction sites, reading frames, and stats stay in sync.</p><span class="stage__meta">select → lacZα · 146 bp · frame +1</span></div></div>
+        <div class="stage reveal"><div class="stage__node">01</div><div class="stage__body"><div class="stage__k">Source</div><h3>Bring in a real record</h3><p>Paste or import FASTA and GenBank. Motif detects the sequence type, computes GC content, finds ORFs, and maps features, so Claude starts from ground truth, not a guess.</p><span class="stage__meta">import → pUC19.gb · 2,686 bp · circular</span></div></div>
+        <div class="stage reveal"><div class="stage__node">02</div><div class="stage__body"><div class="stage__k">Inspect</div><h3>Select once, everywhere</h3><p>Click a feature on the circular map and the exact span lights up in the sequence; select bases and the map follows. Restriction sites, reading frames, and stats stay in sync.</p><span class="stage__meta">select → lacZα · 146-469 · 324 bp</span></div></div>
         <div class="stage reveal"><div class="stage__node">03</div><div class="stage__body"><div class="stage__k">Derive</div><h3>Transform into new records</h3><p>Translate a CDS, reverse-complement a strand, run a digest, design primers, or plan an assembly. Each result becomes its own record on the bench.</p><span class="stage__meta">translate → GFP protein · 238 aa</span></div></div>
         <div class="stage reveal"><div class="stage__node">04</div><div class="stage__body"><div class="stage__k">Review</div><h3>Check the work, then change your mind</h3><p>Motif surfaces the things a careful scientist would catch: an internal Type&nbsp;IIS site, an impossible cut geometry, a stale primer input. The warning is visible, and the corrected result replaces it.</p><span class="stage__meta">flag → internal BsaI site in fragment 2</span></div></div>
         <div class="stage reveal"><div class="stage__node">05</div><div class="stage__body"><div class="stage__k">Export</div><h3>Hand it back, portable</h3><p>Export the record, the annotated map, or the whole workspace as FASTA, GenBank, or a self-contained file. What Claude built, you keep.</p><span class="stage__meta">export → workspace.json · 6 records</span></div></div>
