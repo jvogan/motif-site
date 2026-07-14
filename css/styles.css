@@ -270,7 +270,8 @@ figcaption { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-4); 
 .showcase .container { z-index: 2; }
 .showcase__grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
 .showcase__panel { border-radius: var(--radius-xl); background: linear-gradient(160deg, var(--peach-lo), var(--peach)); padding: clamp(14px, 2vw, 22px); box-shadow: 0 50px 90px -50px rgba(0,0,0,0.8); }
-.showcase__panel .panel__inner { box-shadow: 0 18px 40px -28px rgba(0,0,0,0.7); }
+.showcase__panel .panel__inner { box-shadow: 0 18px 40px -28px rgba(0,0,0,0.7); aspect-ratio: auto; background: #14100c; }
+.showcase__panel .panel__inner img { height: auto; object-fit: contain; object-position: center; }
 .showcase h2 { color: #FBF3E7; font-size: clamp(1.8rem, 1.2rem + 2.2vw, 2.8rem); margin-top: 1rem; }
 .showcase > .container > .showcase__intro { max-width: 34rem; margin-bottom: 2.5rem; }
 .showcase__intro p { color: var(--cream-text-2); margin-top: 1rem; }
