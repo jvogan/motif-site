@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Motif: a molecular-biology bench for Claude Science</title>
-  <meta name="description" content="Motif is a Claude Science plugin that turns a conversation into a molecular-biology workbench (plasmid maps, restriction digests, primer design, and cloning plans) as an artifact you can inspect down to the base pair. Runs in your browser; nothing leaves your device." />
+  <meta name="description" content="Motif is a Claude Science plugin that turns a conversation into a molecular-biology workbench (plasmid maps, restriction digests, primer design, and cloning plans) you can inspect down to the base pair, all inside Claude Science. Runs locally; nothing leaves your device." />
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#FAF9F5" />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
@@ -74,10 +74,7 @@
       <div class="motif-strip" id="motifStrip" aria-hidden="true"></div>
       <div class="hero__cta">
         <a class="btn btn--primary" href="#setup">Set up in Claude Science</a>
-        <a class="btn btn--ghost" href="assets/artifact/index.html" target="_blank" rel="noopener">
-          Try it in your browser
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
+        <a class="btn btn--ghost" href="https://github.com/jvogan/motif">View on GitHub</a>
       </div>
       <div class="hero__trust">
         <span><i class="dot"></i> Runs in your browser</span>
@@ -143,13 +140,6 @@ cd motif &amp;&amp; npm ci</pre>
           <a class="btn btn--link" href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_TROUBLESHOOTING.md">Troubleshooting <span class="arrow" aria-hidden="true">→</span></a>
           <a class="btn btn--link" href="https://github.com/jvogan/motif">View source on GitHub <span class="arrow" aria-hidden="true">→</span></a>
         </div>
-        <div class="setup__preview">
-          <h3>Prefer to look first?</h3>
-          <p>Open the standalone workbench in your browser. No install, no sign-in. This preview does not add Motif to Claude Science.</p>
-          <a class="btn btn--ghost" href="assets/artifact/index.html" target="_blank" rel="noopener">Open the artifact
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-          </a>
-        </div>
       </aside>
     </div>
   </div>
@@ -160,19 +150,19 @@ cd motif &amp;&amp; npm ci</pre>
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Watch</span>
-      <h2 id="watch-h">A quick intro to Motif.</h2>
-      <p class="lead">To see Motif run on a pathway, <a href="#session">follow the session below</a>, or <a href="assets/artifact/index.html" target="_blank" rel="noopener">open the interactive artifact</a>.</p>
+      <h2 id="watch-h">Open a pathway in Motif.</h2>
+      <p class="lead">A narrated walkthrough: ask Claude Science to open the beta-carotene pathway, and its four genes load into Motif with sequence, protein translation, and a restriction map. Speak or type your requests, and read every result without leaving Claude Science. Plays with sound.</p>
     </div>
     <figure class="screenshot-window video-window reveal">
       <div class="screenshot-window__bar" aria-hidden="true"></div>
       <div class="screenshot-window__image">
         <video controls preload="metadata" playsinline
-               poster="assets/video/motif-promo-poster.webp" width="1920" height="1080">
-          <source src="assets/video/motif-promo.mp4" type="video/mp4" />
-          <p>Your browser cannot play embedded video. <a href="assets/video/motif-promo.mp4">Download the video</a>.</p>
+               poster="assets/video/motif-demo-full-poster.jpg" width="1920" height="1080">
+          <source src="assets/video/motif-demo-full.mp4" type="video/mp4" />
+          <p>Your browser cannot play embedded video. <a href="assets/video/motif-demo-full.mp4">Download the video</a>.</p>
         </video>
       </div>
-      <figcaption>Made for the <em>Built with Claude: Life Sciences</em> hackathon.</figcaption>
+      <figcaption>Beta-carotene pathway: crtE, crtB, crtI, crtY in Motif · 1:28, with voiceover</figcaption>
     </figure>
   </div>
 </section>
@@ -273,7 +263,7 @@ cd motif &amp;&amp; npm ci</pre>
       </div>
       <div class="proof reveal" data-delay="2">
         <div class="proof__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <div><h3>Local-first</h3><p>The artifact runs entirely in your browser, with no account and no server.</p></div>
+        <div><h3>Local-first</h3><p>Motif runs on your machine, with no account and no cloud service.</p></div>
       </div>
       <div class="proof reveal" data-delay="3">
         <div class="proof__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M8 7l8 4M8 17l8-4"/></svg></div>
@@ -314,7 +304,7 @@ cd motif &amp;&amp; npm ci</pre>
       <ul class="band__list">
         <li>Feature arcs for AmpR, lacZα, the pMB1 origin, and the MCS</li>
         <li>Unique-cutter restriction ticks around the polylinker</li>
-        <li>The same rendering engine that ships in the artifact</li>
+        <li>The same map Motif draws inside Claude Science</li>
       </ul>
     </div>
     <div class="band__media reveal" data-delay="1">
@@ -673,28 +663,6 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
   </div>
 </section>
 
-<!-- ============================ WORKFLOW EXAMPLE (video) ============================ -->
-<section class="section section--tight" id="demo" aria-labelledby="demo-h">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Full walkthrough</span>
-      <h2 id="demo-h">Open a pathway in Motif.</h2>
-      <p class="lead">A narrated walkthrough. Ask Claude Science to open the beta-carotene pathway, and its four genes load into Motif: sequence, protein translation, and a restriction map. Speak or type your requests, and read every result without leaving Claude Science. Plays with sound.</p>
-    </div>
-    <figure class="screenshot-window video-window reveal">
-      <div class="screenshot-window__bar" aria-hidden="true"></div>
-      <div class="screenshot-window__image">
-        <video controls preload="metadata" playsinline
-               poster="assets/video/motif-demo-full-poster.jpg" width="1920" height="1080">
-          <source src="assets/video/motif-demo-full.mp4" type="video/mp4" />
-          <p>Your browser cannot play embedded video. <a href="assets/video/motif-demo-full.mp4">Download the video</a>.</p>
-        </video>
-      </div>
-      <figcaption>Beta-carotene pathway: crtE, crtB, crtI, crtY in Motif · 1:28, with voiceover</figcaption>
-    </figure>
-  </div>
-</section>
-
 <!-- ============================ SETUP HELP (FAQ) ============================ -->
 <section class="section section--tight" id="setup-help" aria-labelledby="sh-h">
   <div class="container">
@@ -810,7 +778,7 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
       <h2>Open Motif in Claude Science.</h2>
       <p>Load a plasmid, then inspect the records that come back.</p>
       <div class="closer__cta">
-        <a class="btn btn--primary" href="assets/artifact/index.html" target="_blank" rel="noopener">Try the artifact</a>
+        <a class="btn btn--primary" href="#setup">Set up in Claude Science</a>
         <a class="btn btn--ghost" href="https://github.com/jvogan/motif">Read the docs on GitHub</a>
       </div>
     </div>
@@ -846,7 +814,6 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
       <a href="https://github.com/jvogan/motif">GitHub</a>
       <a href="https://github.com/jvogan/motif#readme">Documentation</a>
       <a href="https://github.com/jvogan/motif/blob/main/LICENSE">MIT License</a>
-      <a href="assets/artifact/index.html" target="_blank" rel="noopener">Live artifact</a>
     </div>
   </div>
   <div class="container footer__legal">
