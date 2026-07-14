@@ -17,11 +17,11 @@
   <meta property="og:image" content="https://jvogan.github.io/motif-site/assets/social/og-card.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Motif for Claude Science. A research partner that shows its work." />
+  <meta property="og:image:alt" content="Motif for Claude Science. Sequence records and results in one workbench." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Motif: a molecular-biology bench for Claude Science" />
   <meta name="twitter:image" content="https://jvogan.github.io/motif-site/assets/social/og-card.png" />
-  <meta name="twitter:image:alt" content="Motif for Claude Science. A research partner that shows its work." />
+  <meta name="twitter:image:alt" content="Motif for Claude Science. Sequence records and results in one workbench." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,7 +49,7 @@
       <a href="#session">See it run</a>
       <a href="#explore">Explore</a>
       <a href="#capabilities">Capabilities</a>
-      <a href="#start">Quick start</a>
+      <a href="#setup">Get started</a>
       <a class="nav__gh btn btn--ghost btn--sm" href="https://github.com/jvogan/motif">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9l-.01 2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
         GitHub
@@ -70,14 +70,14 @@
         Stay in Claude Science
       </span>
       <h1 id="hero-h">Sequence work Claude can <em>see, run,</em> and hand back.</h1>
-      <p class="hero__lead">Motif is a molecular-biology workbench for Claude Science. View maps and alignments, run restriction digests and primer design, and keep records and notes, all without leaving Claude Science.</p>
+      <p class="hero__lead">Motif is a molecular-biology workbench for Claude Science. View maps and alignments, keep records and notes, and work without leaving Claude Science.</p>
       <div class="motif-strip" id="motifStrip" aria-hidden="true"></div>
       <div class="hero__cta">
-        <a class="btn btn--primary" href="assets/artifact/index.html" target="_blank" rel="noopener">
-          Try the artifact
+        <a class="btn btn--primary" href="#setup">Set up in Claude Science</a>
+        <a class="btn btn--ghost" href="assets/artifact/index.html" target="_blank" rel="noopener">
+          Try it in your browser
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
-        <a class="btn btn--ghost" href="https://github.com/jvogan/motif">View on GitHub</a>
       </div>
       <div class="hero__trust">
         <span><i class="dot"></i> Runs in your browser</span>
@@ -97,6 +97,60 @@
         <i class="pulse"></i>
         <span><span class="mono">pUC19</span> · 2,686 bp · map, sequence &amp; features in sync</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ GET STARTED (setup, near top) ============================ -->
+<section class="section section--tight" id="setup" aria-labelledby="setup-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Get started</span>
+      <h2 id="setup-h">Run Motif in Claude Science.</h2>
+      <p class="lead">Motif runs from a local checkout. You need Node&nbsp;22.12+ and permission for Claude Science to read the Motif folder. A coding agent like Claude&nbsp;Code can run these steps for you.</p>
+    </div>
+    <div class="setup reveal">
+      <ol class="setup__steps">
+        <li class="setup__step">
+          <h3>Get the code</h3>
+          <p>Clone the repository and install dependencies.</p>
+          <pre class="code"><span class="c"># needs Node 22.12+</span>
+git clone <span class="s">https://github.com/jvogan/motif</span>
+cd motif &amp;&amp; npm ci</pre>
+        </li>
+        <li class="setup__step">
+          <h3>Build and register the connector</h3>
+          <p>One command builds Motif and adds the local connector.</p>
+          <pre class="code">npm run <span class="p">claude-science:setup</span></pre>
+        </li>
+        <li class="setup__step">
+          <h3>Grant the folder in Claude Science</h3>
+          <p>Open Permissions and grant the exact Motif folder.</p>
+        </li>
+        <li class="setup__step">
+          <h3>Relaunch and reconnect</h3>
+          <p>Fully quit and reopen Claude Science, then reconnect <span class="mono">motif-local</span>.</p>
+        </li>
+        <li class="setup__step">
+          <h3>Confirm, then try it</h3>
+          <p><span class="mono">motif-local</span> appears under Connectors, in the Custom group. Ask Claude Science to open a sequence, for example <span class="mono">Open pUC19 in Motif</span>. You can type the request or dictate it, so you can drive the bench by voice.</p>
+        </li>
+      </ol>
+      <aside class="setup__aside">
+        <div class="setup__links">
+          <a class="btn btn--primary" href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_QUICKSTART.md">Setup guide</a>
+          <a class="btn btn--ghost" href="#connect">See the connector screens</a>
+          <a class="btn btn--link" href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_TROUBLESHOOTING.md">Troubleshooting <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--link" href="https://github.com/jvogan/motif">View source on GitHub <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <div class="setup__preview">
+          <h3>Prefer to look first?</h3>
+          <p>Open the standalone workbench in your browser. No install, no sign-in. This preview does not add Motif to Claude Science.</p>
+          <a class="btn btn--ghost" href="assets/artifact/index.html" target="_blank" rel="noopener">Open the artifact
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -244,7 +298,7 @@
         <div class="stage reveal"><div class="stage__node">02</div><div class="stage__body"><div class="stage__k">Inspect</div><h3>Selections stay in sync</h3><p>Click a feature on the circular map and the matching span highlights in the sequence. Select bases and the map updates. Restriction sites, reading frames, and stats stay in sync.</p><span class="stage__meta">select → lacZα · 146-469 · 324 bp</span></div></div>
         <div class="stage reveal"><div class="stage__node">03</div><div class="stage__body"><div class="stage__k">Derive</div><h3>Transform into new records</h3><p>Translate a CDS, reverse-complement a strand, run a digest, design primers, or plan an assembly. Each result becomes its own record on the bench.</p><span class="stage__meta">translate → GFP protein · 238 aa</span></div></div>
         <div class="stage reveal"><div class="stage__node">04</div><div class="stage__body"><div class="stage__k">Review</div><h3>Review warnings, then revise</h3><p>Motif flags internal Type&nbsp;IIS sites, impossible cut geometry, and stale primer inputs. Fix the input and recompute the result.</p><span class="stage__meta">flag → internal BsaI site in fragment 2</span></div></div>
-        <div class="stage reveal"><div class="stage__node">05</div><div class="stage__body"><div class="stage__k">Export</div><h3>Export the work</h3><p>Export the record, the annotated map, or the whole workspace as FASTA, GenBank, or a self-contained file.</p><span class="stage__meta">export → workspace.json · 6 records</span></div></div>
+        <div class="stage reveal"><div class="stage__node">05</div><div class="stage__body"><div class="stage__k">Export</div><h3>Export the work</h3><p>Export the record, the annotated map, or the workspace as FASTA, GenBank, or a self-contained file.</p><span class="stage__meta">export → workspace.json · 6 records</span></div></div>
       </div>
     </div>
   </div>
@@ -314,7 +368,7 @@
       <div class="screenshot-window__bar" aria-hidden="true"></div>
       <div class="screenshot-window__image">
         <img src="assets/shots/claude-science-restriction-digest.webp" width="1558" height="1398" loading="lazy"
-             alt="The Motif workbench on a real 11,429 bp record: named restriction sites (HpaII/MspI, TaqI, HaeIII, AluI, XhoI) marked on the sequence, a linear map covered in restriction ticks with the crtE feature, and a digest preview reading 13 cuts and 14 fragments across 292 sites and 34 enzymes." />
+             alt="The Motif workbench on an 11,429 bp record: named restriction sites (HpaII/MspI, TaqI, HaeIII, AluI, XhoI) marked on the sequence, a linear map covered in restriction ticks with the crtE feature, and a digest preview reading 13 cuts and 14 fragments across 292 sites and 34 enzymes." />
       </div>
       <figcaption>crtE (DQ012943) · 292/292 sites, 34 enzymes · digest preview 13 cuts, 14 fragments</figcaption>
     </figure>
@@ -390,7 +444,7 @@
         </div>
         <div class="acc">
           <button class="acc__btn" aria-expanded="false" aria-controls="acc-p5"><h3>Export the work</h3><span class="acc__ic" aria-hidden="true"></span></button>
-          <div class="acc__panel" id="acc-p5" role="region"><div class="acc__inner">FASTA, GenBank, an annotated map, or the whole workspace as one self-contained file.</div></div>
+          <div class="acc__panel" id="acc-p5" role="region"><div class="acc__inner">FASTA, GenBank, an annotated map, or the workspace as one self-contained file.</div></div>
         </div>
       </div>
     </div>
@@ -459,67 +513,25 @@
       <div class="gcard reveal"><img src="assets/banners/09-map-to-bases.webp" alt="A plasmid map with one feature selected, connected to the exact matching span in the sequence rows." loading="lazy" /><span>map ↔ bases in sync</span></div>
       <div class="gcard reveal" data-delay="1"><img src="assets/banners/05-guide-to-target.webp" alt="Ranked guide-candidate rows on the left connect via a thin line to the exact active position on a plasmid map." loading="lazy" /><span>guide → target</span></div>
       <div class="gcard reveal" data-delay="2"><img src="assets/banners/07-inventory-to-insight.webp" alt="Compact DNA-record cards fan in from the left and converge into one workbench." loading="lazy" /><span>inventory → insight</span></div>
-      <div class="gcard reveal" data-delay="3"><img src="assets/banners/08-responsive-workbench.webp" alt="Three product frames from compact portrait to full panoramic workspace, showing the same record adapting." loading="lazy" /><span>compact → panoramic</span></div>
+      <div class="gcard reveal" data-delay="3"><img src="assets/banners/08-responsive-workbench.webp" alt="Three product frames from compact portrait to wide panoramic workspace, showing the same record adapting." loading="lazy" /><span>compact → panoramic</span></div>
     </div>
   </div>
 </section>
 
-<!-- ============================ QUICK START (tabs) ============================ -->
-<section class="section" id="start" aria-labelledby="start-h">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Quick start</span>
-      <h2 id="start-h">Three ways to start.</h2>
-      <p class="lead">Open the bench directly, add it to Claude Science, or wire the browser bridge for agent-driven work.</p>
+<!-- ============================ ADVANCED: browser bridge ============================ -->
+<section class="section" id="bridge" aria-labelledby="bridge-h">
+  <div class="container band">
+    <div class="band__copy reveal">
+      <span class="eyebrow">Advanced</span>
+      <h2 id="bridge-h">Read and prepare from an agent.</h2>
+      <p>With the bench open, a small browser bridge lets an agent read the active record and prepare new ones. The agent prepares records, you verify them.</p>
+      <a class="btn btn--link" href="#boundaries">Where the line is <span class="arrow" aria-hidden="true">→</span></a>
     </div>
-
-    <div class="tabs reveal" id="startTabs">
-      <div class="tabs__row" role="tablist" aria-label="Quick start">
-        <button class="tab" role="tab" aria-selected="true" aria-controls="tp-1" id="tb-1">Try it now</button>
-        <button class="tab" role="tab" aria-selected="false" aria-controls="tp-2" id="tb-2">Add to Claude Science</button>
-        <button class="tab" role="tab" aria-selected="false" aria-controls="tp-3" id="tb-3">The browser bridge</button>
-      </div>
-
-      <div class="tabpanel is-active" role="tabpanel" id="tp-1" aria-labelledby="tb-1">
-        <div class="tabpanel__copy">
-          <h3>Open the artifact</h3>
-          <p>The workbench is a single self-contained file, and it opens with pUC19 loaded. No install, no sign-in.</p>
-          <a class="btn btn--primary" href="assets/artifact/index.html" target="_blank" rel="noopener">Launch the bench
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-          </a>
-        </div>
-        <pre class="code"><span class="c"># nothing to install</span>
-open <span class="s">motif-artifact.html</span>
-<span class="c"># pUC19 is already on the bench</span></pre>
-      </div>
-
-      <div class="tabpanel" role="tabpanel" id="tp-2" aria-labelledby="tb-2" hidden>
-        <div class="tabpanel__copy">
-          <h3>Get it running in Claude Science</h3>
-          <p>Motif runs from a local checkout. Clone the repo, build the connector, then grant Claude Science read access to that folder and relaunch. Node&nbsp;22.12+ is required.</p>
-          <p>A coding agent like <strong>Claude&nbsp;Code</strong> can run these steps. You grant Motif's folder in Claude Science, relaunch, and <a href="#connect">confirm the connector</a>.</p>
-          <a class="btn btn--ghost" href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_QUICKSTART.md">Full setup guide</a>
-        </div>
-        <pre class="code"><span class="c"># 1 · get the code (needs Node 22.12+)</span>
-git clone <span class="s">https://github.com/jvogan/motif</span>
-cd motif &amp;&amp; npm ci
-<span class="c"># 2 · build + register the local connector</span>
-npm run <span class="p">claude-science:setup</span>
-<span class="c"># 3 · in Claude Science: grant this folder,</span>
-<span class="c">#    fully quit + reopen, then reconnect "motif-local"</span></pre>
-      </div>
-
-      <div class="tabpanel" role="tabpanel" id="tp-3" aria-labelledby="tb-3" hidden>
-        <div class="tabpanel__copy">
-          <h3>Read &amp; prepare from an agent</h3>
-          <p>With the bench open, a small bridge lets an agent read the active record and prepare new ones. The agent prepares records; you verify them.</p>
-          <a class="btn btn--ghost" href="#boundaries">Where the line is</a>
-        </div>
-        <pre class="code"><span class="c">// read what's on the bench (window.motifHelp() lists them all)</span>
+    <div class="band__media reveal" data-delay="1">
+      <pre class="code"><span class="c">// read what's on the bench (window.motifHelp() lists them all)</span>
 window.<span class="k">motifGetActiveRecord</span>()
 <span class="c">// prepare derived records</span>
 window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre>
-      </div>
     </div>
   </div>
 </section>
@@ -565,7 +577,7 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
     <div class="section-head reveal">
       <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> One session, end to end</span>
       <h2 id="fp-h">From a paper to a Motif alignment.</h2>
-      <p class="lead">Point Claude Science at a paper and ask for its genes. It fetches the records into Motif, then keeps going as you ask for more homologs and a multiple sequence alignment.</p>
+      <p class="lead">Point Claude Science at a paper and ask for its genes. It fetches the records into Motif. Ask it to add homologs and run a multiple sequence alignment.</p>
     </div>
     <ol class="session">
       <li class="session__step reveal">
@@ -624,7 +636,7 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
           <span class="session__num" aria-hidden="true">04</span>
           <div class="session__caption">
             <h3>Iterate and add more</h3>
-            <p>Ask for more in the same conversation. It pulls two more crtE and two more FPS homologs from UniProt and adds them, and the workbench grows to six records.</p>
+            <p>Ask for more in the same conversation. It pulls two more crtE and two more FPS homologs from UniProt and adds them. The workbench then holds six records.</p>
           </div>
         </div>
         <figure class="figure screenshot-window">
@@ -688,7 +700,7 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
       </details>
       <details class="faq__item">
         <summary>Node installed through nvm or asdf gets denied</summary>
-        <div class="faq__body">A Node binary inside a version manager is often outside the granted folder. Use a system or Homebrew Node 22.12+, or grant that Node's folder and rerun setup with its path. The full guide shows the command.</div>
+        <div class="faq__body">A Node binary inside a version manager is often outside the granted folder. Use a system or Homebrew Node 22.12+, or grant that Node's folder and rerun setup with its path. The troubleshooting guide shows the command.</div>
       </details>
     </div>
   </div>
@@ -698,7 +710,7 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
 <section class="section bg-parchment" id="starters" aria-labelledby="st-h">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> Getting started</span>
+      <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> Starter prompts</span>
       <h2 id="st-h">Try one of these prompts.</h2>
       <p class="lead">Open Motif in Claude Science and paste any of these.</p>
     </div>
@@ -805,7 +817,7 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
       <a href="#how">How it works</a>
       <a href="#explore">Explore the map</a>
       <a href="#capabilities">Capabilities</a>
-      <a href="#start">Quick start</a>
+      <a href="#setup">Get started</a>
     </div>
     <div class="footer__col">
       <h5>Project</h5>

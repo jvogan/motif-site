@@ -276,6 +276,21 @@ figcaption { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-4); 
 .cloning-list { max-width: 60rem; margin: 1.6rem auto 0; grid-template-columns: repeat(3, 1fr); gap: 1.2rem 1.6rem; }
 @media (max-width: 700px) { .cloning-list { grid-template-columns: 1fr; } }
 
+/* Get started (near-top setup) */
+.setup { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(1.6rem, 4vw, 3rem); align-items: start; margin-top: clamp(1.8rem, 4vw, 2.6rem); }
+.setup__steps { list-style: none; counter-reset: setup; margin: 0; padding: 0; display: grid; gap: 1.5rem; }
+.setup__step { counter-increment: setup; position: relative; padding-left: 3.2rem; }
+.setup__step::before { content: counter(setup, decimal-leading-zero); position: absolute; left: 0; top: 0; width: 2.2rem; height: 2.2rem; display: grid; place-items: center; font-family: var(--mono); font-size: 0.82rem; font-weight: 600; color: var(--clay); border: 1.5px solid var(--line); border-radius: 999px; }
+.setup__step h3 { font-size: 1.05rem; margin: 0.2rem 0 0.3rem; }
+.setup__step p { margin: 0; color: var(--ink-2); }
+.setup__step .code { margin-top: 0.75rem; }
+.setup__aside { display: grid; gap: 1.3rem; }
+.setup__links { display: grid; gap: 0.7rem; justify-items: start; }
+.setup__preview { padding: 1.2rem 1.3rem; background: var(--parchment); border: 1px solid var(--line); border-radius: var(--radius); }
+.setup__preview h3 { font-size: 1rem; margin: 0 0 0.4rem; }
+.setup__preview p { margin: 0 0 1rem; color: var(--ink-2); font-size: 0.95rem; }
+@media (max-width: 860px) { .setup { grid-template-columns: 1fr; } }
+
 @media (max-width: 760px) { .screenshot-grid { grid-template-columns: 1fr; } }
 @media (max-width: 840px) { .band { grid-template-columns: 1fr; gap: 2rem; } .band--flip .band__media { order: 0; } .band__copy { max-width: none; } }
 
