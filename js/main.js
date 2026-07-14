@@ -36,6 +36,27 @@
     items.forEach(function (n) { io.observe(n); });
   })();
 
+  /* ---------- hackathon video: click-to-load YouTube (TEMP — remove after hackathon, with #hackathon + .ytlite CSS) ---------- */
+  (function () {
+    var host = document.querySelector(".ytlite");
+    if (!host) return;
+    var btn = host.querySelector(".ytlite__btn");
+    var slot = host.querySelector(".screenshot-window__image");
+    if (!btn || !slot) return;
+    btn.addEventListener("click", function () {
+      var id = host.getAttribute("data-ytid");
+      if (!id) return;
+      var f = document.createElement("iframe");
+      f.className = "ytlite__frame";
+      f.title = "Motif walkthrough video player";
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      f.setAttribute("allowfullscreen", "");
+      f.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+      slot.replaceChildren(f);
+      f.focus();
+    });
+  })();
+
   /* ---------- sticky nav shadow ---------- */
   (function () {
     var nav = document.getElementById("nav");

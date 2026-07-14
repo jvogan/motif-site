@@ -446,3 +446,23 @@ figcaption { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-4); 
 .reveal[data-delay="2"] { transition-delay: 0.16s; }
 .reveal[data-delay="3"] { transition-delay: 0.24s; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none; } }
+
+/* ---------- hackathon video (TEMP — remove after hackathon, with #hackathon in index.html + main.js block) ---------- */
+#hackathon .section-head { margin-inline: auto; text-align: center; }
+#hackathon .section-head .lead { margin-inline: auto; }
+.ytlite { max-width: 42rem; }
+.ytlite__btn { appearance: none; -webkit-appearance: none; margin: 0; padding: 0; width: 100%; height: 100%; background: var(--dark-2); border: 1px solid rgba(236,228,214,0.1); border-radius: 10px; overflow: hidden; position: relative; cursor: pointer; display: block; }
+.ytlite__poster { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s var(--ease), filter 0.3s var(--ease); }
+.ytlite__btn:hover .ytlite__poster { transform: scale(1.02); filter: brightness(1.04); }
+.ytlite__play { position: absolute; inset: 0; display: grid; place-items: center; }
+.ytlite__play svg { width: clamp(56px, 9vw, 74px); height: auto; filter: drop-shadow(0 6px 16px rgba(0,0,0,0.45)); opacity: 0.92; transition: opacity 0.2s var(--ease), transform 0.2s var(--ease); }
+.ytlite__btn:hover .ytlite__play svg, .ytlite__btn:focus-visible .ytlite__play svg { opacity: 1; transform: scale(1.06); }
+.ytlite__btn:focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; }
+.ytlite__frame { width: 100%; height: 100%; border: 0; border-radius: 10px; display: block; }
+.ytlite__yt { color: var(--clay-ink); text-decoration: underline; text-underline-offset: 2px; font-weight: 600; }
+.ytlite__yt:hover { color: var(--clay-deep); }
+@media (prefers-reduced-motion: reduce) {
+  .ytlite__poster, .ytlite__play svg { transition: none; }
+  .ytlite__btn:hover .ytlite__poster { transform: none; filter: none; }
+  .ytlite__btn:hover .ytlite__play svg, .ytlite__btn:focus-visible .ytlite__play svg { transform: none; }
+}
