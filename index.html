@@ -490,7 +490,7 @@ open <span class="s">motif-artifact.html</span>
         <div class="tabpanel__copy">
           <h3>Get it running in Claude Science</h3>
           <p>Motif runs from a local checkout. Clone the repo, build the connector, then grant Claude Science read access to that folder and relaunch. Node&nbsp;22.12+ is required.</p>
-          <p>A coding agent like <strong>Claude&nbsp;Code</strong> can run these steps. You grant Motif's folder in Claude Science and relaunch.</p>
+          <p>A coding agent like <strong>Claude&nbsp;Code</strong> can run these steps. You grant Motif's folder in Claude Science, relaunch, and <a href="#connect">confirm the connector</a>.</p>
           <a class="btn btn--ghost" href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_QUICKSTART.md">Full setup guide</a>
         </div>
         <pre class="code"><span class="c"># 1 · get the code (needs Node 22.12+)</span>
@@ -517,6 +517,41 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
   </div>
 </section>
 
+<!-- ============================ CONNECT IN CLAUDE SCIENCE ============================ -->
+<section class="section section--tight" id="connect" aria-labelledby="cn-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">In Claude Science</span>
+      <h2 id="cn-h">Motif as a Claude Science connector.</h2>
+      <p class="lead">After <span class="mono">npm run claude-science:setup</span> registers the server, Motif is a connector you open from Claude Science. Grant access, choose approvals, then ask Claude Science to open a sequence or build a workbench.</p>
+    </div>
+    <div class="connect reveal">
+      <div class="connect__item">
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-motif-local-connected.webp" width="1460" height="230" loading="lazy"
+                 alt="The Claude Science Connectors list, Custom group, showing motif-local added and enabled." />
+          </div>
+          <figcaption>Connectors → Custom · motif-local, enabled</figcaption>
+        </figure>
+        <p class="connect__note">Setup adds one connector named <span class="mono">motif-local</span>. It appears under Connectors, in the Custom group with the connectors you added.</p>
+      </div>
+      <div class="connect__item">
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-skip-approvals.webp" width="1519" height="712" loading="lazy"
+                 alt="The motif-local connector detail in Claude Science: a Skip approvals toggle and two read-only tools, motif_open_workbench and motif_create_workbench_artifact." />
+          </div>
+          <figcaption>motif-local · approvals and its two tools</figcaption>
+        </figure>
+        <p class="connect__note">Open <span class="mono">motif-local</span> to see its two tools, <span class="mono">motif_open_workbench</span> and <span class="mono">motif_create_workbench_artifact</span>. Leave approvals on and Claude Science shows a card before each call. Turn on <strong>Skip approvals</strong> to let it run them without a prompt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ SETUP HELP (FAQ) ============================ -->
 <section class="section section--tight" id="setup-help" aria-labelledby="sh-h">
   <div class="container">
@@ -528,7 +563,7 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
     <div class="faq reveal">
       <details class="faq__item">
         <summary>“Operation not permitted,” or the tools won't load</summary>
-        <div class="faq__body">Claude Science's sandbox is blocking the folder. Grant the exact Motif folder under Customize → Permissions, then fully quit and reopen Claude Science. Reconnect alone does not apply a new grant.</div>
+        <div class="faq__body">Claude Science's sandbox is blocking the folder. Open Permissions in Claude Science and grant the exact Motif folder, then fully quit and reopen the app. Reconnect alone does not apply a new grant.</div>
       </details>
       <details class="faq__item">
         <summary>The tool ran, but no workbench appeared</summary>

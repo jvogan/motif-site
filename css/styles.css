@@ -256,6 +256,14 @@ figcaption { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-4); 
 .session__step .screenshot-window__image img { height: auto; }
 @media (max-width: 560px) { .session__meta { grid-template-columns: 1fr; gap: 0.5rem; } }
 
+/* Connector setup showcase */
+.connect { max-width: 60rem; margin: clamp(2.2rem, 5vw, 3.4rem) auto 0; display: grid; gap: clamp(1.8rem, 4vw, 2.8rem); }
+.connect__item { display: grid; gap: 1rem; }
+.connect .screenshot-window__image { aspect-ratio: auto; }
+.connect .screenshot-window__image img { height: auto; }
+.connect__note { color: var(--ink-2); max-width: 44rem; }
+.connect__note strong { color: var(--ink); font-weight: 600; }
+
 @media (max-width: 760px) { .screenshot-grid { grid-template-columns: 1fr; } }
 @media (max-width: 840px) { .band { grid-template-columns: 1fr; gap: 2rem; } .band--flip .band__media { order: 0; } .band__copy { max-width: none; } }
 
