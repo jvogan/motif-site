@@ -46,6 +46,7 @@
     <nav class="nav__links" aria-label="Primary">
       <a href="#how">How it works</a>
       <a href="#watch">Watch</a>
+      <a href="#session">See it run</a>
       <a href="#explore">Explore</a>
       <a href="#capabilities">Capabilities</a>
       <a href="#start">Quick start</a>
@@ -106,7 +107,7 @@
     <div class="section-head reveal">
       <span class="eyebrow">Watch</span>
       <h2 id="watch-h">A quick intro to Motif.</h2>
-      <p class="lead">A short overview of what Motif is. To see it actually run, <a href="assets/artifact/index.html" target="_blank" rel="noopener">open the interactive artifact</a> or <a href="#explore">explore the live map</a> below.</p>
+      <p class="lead">A short overview of what Motif is. To see it run on a real pathway, <a href="#session">follow the session below</a>, or <a href="assets/artifact/index.html" target="_blank" rel="noopener">open the interactive artifact</a> yourself.</p>
     </div>
     <figure class="screenshot-window video-window reveal">
       <div class="screenshot-window__bar" aria-hidden="true"></div>
@@ -119,6 +120,87 @@
       </div>
       <figcaption>Made for the <em>Built with Claude: Life Sciences</em> hackathon.</figcaption>
     </figure>
+  </div>
+</section>
+
+<!-- ============================ REAL SESSION (product screenshots) ============================ -->
+<section class="section" id="session" aria-labelledby="ses-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> A real session</span>
+      <h2 id="ses-h">From a prompt to a pathway on the bench.</h2>
+      <p class="lead">One continuous session in Claude Science. Ask it to open a pathway, and Motif fetches the genes, loads them as records, and aligns the ones you choose, with every step an object you can inspect.</p>
+    </div>
+    <ol class="session">
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">01</span>
+          <div class="session__caption">
+            <h3>Ask for the pathway</h3>
+            <p>Point Claude Science at a UniProt entry. It identifies BCO1, finds its Reactome pathway (retinoid metabolism and transport), and fetches the participating genes.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-fetch-pathway.webp" width="1468" height="810" loading="lazy"
+                 alt="Claude Science reading a UniProt link, identifying BCO1 and its retinoid-metabolism Reactome pathway, and fetching the pathway's genes." />
+          </div>
+          <figcaption>UniProt Q9HAY6 → Reactome R-HSA-975634 · retinoid metabolism</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">02</span>
+          <div class="session__caption">
+            <h3>Load the set on the bench</h3>
+            <p>Forty-four proteins land in the inventory as real records. GPC1's 558-residue sequence and its protein map render natively, ready to inspect.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/motif-pathway-genes-loaded.webp" width="1714" height="1352" loading="lazy"
+                 alt="The Motif workbench with 44 pathway proteins in the inventory and GPC1's amino-acid sequence and protein map open." />
+          </div>
+          <figcaption>44 records · GPC1 (P35052) · protein · 558 aa</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">03</span>
+          <div class="session__caption">
+            <h3>Align the proteins</h3>
+            <p>Select records and run a multiple sequence alignment in the browser, or export the inputs to MAFFT, MUSCLE, or Clustal Omega.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/motif-pathway-msa.webp" width="2000" height="1187" loading="lazy"
+                 alt="Motif's Multiple Sequence Alignment dialog with pathway proteins selected and options to align in the browser or export to external aligners." />
+          </div>
+          <figcaption>Align in browser · or MAFFT / MUSCLE / Clustal Omega</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">04</span>
+          <div class="session__caption">
+            <h3>Read the alignment</h3>
+            <p>The alignment is itself a record. Here BCO1 is compared against GPC1: 592 columns, conserved positions, a consensus row, and per-column differences you can export as aligned FASTA.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/motif-msa-result.webp" width="2000" height="1593" loading="lazy"
+                 alt="A rendered multiple sequence alignment of BCO1 against GPC1: 592 columns with conserved positions, a consensus row, and per-column differences." />
+          </div>
+          <figcaption>BCO1 vs GPC1 · 592 columns · 20% conserved · export aligned FASTA</figcaption>
+        </figure>
+      </li>
+    </ol>
   </div>
 </section>
 
