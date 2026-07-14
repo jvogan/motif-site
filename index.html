@@ -107,7 +107,7 @@
     <div class="section-head reveal">
       <span class="eyebrow">Watch</span>
       <h2 id="watch-h">A quick intro to Motif.</h2>
-      <p class="lead">A short overview of what Motif is. To see it run on a real pathway, <a href="#session">follow the session below</a>, or <a href="assets/artifact/index.html" target="_blank" rel="noopener">open the interactive artifact</a> yourself.</p>
+      <p class="lead">A short overview of what Motif is. To see it run on a pathway, <a href="#session">follow the session below</a>, or <a href="assets/artifact/index.html" target="_blank" rel="noopener">open the interactive artifact</a>.</p>
     </div>
     <figure class="screenshot-window video-window reveal">
       <div class="screenshot-window__bar" aria-hidden="true"></div>
@@ -128,8 +128,8 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> A real session</span>
-      <h2 id="ses-h">From a prompt to a pathway on the bench.</h2>
-      <p class="lead">One continuous session in Claude Science. Ask it to open a pathway, and Motif fetches the genes, loads them as records, and aligns the ones you choose, with every step an object you can inspect.</p>
+      <h2 id="ses-h">One prompt loads a pathway onto the bench.</h2>
+      <p class="lead">One continuous session in Claude Science. Ask it to open a pathway, and Motif fetches the genes, loads them as records, and aligns the ones you choose.</p>
     </div>
     <ol class="session">
       <li class="session__step reveal">
@@ -154,7 +154,7 @@
           <span class="session__num" aria-hidden="true">02</span>
           <div class="session__caption">
             <h3>Load the set on the bench</h3>
-            <p>Forty-four proteins land in the inventory as real records. GPC1's 558-residue sequence and its protein map render natively, ready to inspect.</p>
+            <p>Forty-four proteins appear in the inventory as records. GPC1's 558-residue sequence and protein map render in the workbench.</p>
           </div>
         </div>
         <figure class="figure screenshot-window">
@@ -490,7 +490,7 @@ open <span class="s">motif-artifact.html</span>
         <div class="tabpanel__copy">
           <h3>Get it running in Claude Science</h3>
           <p>Motif runs from a local checkout, so setup is a few terminal commands (Node&nbsp;22.12+). Clone the repo, build the connector, then grant Claude Science read access to that folder and relaunch it.</p>
-          <p>Rather not touch a terminal? Hand these steps to a coding agent like <strong>Claude&nbsp;Code</strong>. It can clone, build, register the connector, and run the health check, so all you do is grant Motif's folder in Claude Science and relaunch.</p>
+          <p>A coding agent like <strong>Claude&nbsp;Code</strong> can run these steps. It clones, builds, registers the connector, and runs the health check. You grant Motif's folder in Claude Science and relaunch.</p>
           <a class="btn btn--ghost" href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_QUICKSTART.md">Full setup guide</a>
         </div>
         <pre class="code"><span class="c"># 1 · get the code (needs Node 22.12+)</span>
@@ -522,29 +522,29 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">If setup gets stuck</span>
-      <h2 id="sh-h">Common snags, and the honest fix.</h2>
-      <p class="lead">Motif is local-first, so most snags come down to Claude Science's sandbox reaching your files, not Motif's behavior. The full <a href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_TROUBLESHOOTING.md">troubleshooting guide</a> covers each case in depth.</p>
+      <h2 id="sh-h">Common problems and their fixes.</h2>
+      <p class="lead">Most setup problems come from Claude Science's sandbox needing access to your files. The full <a href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_TROUBLESHOOTING.md">troubleshooting guide</a> covers the rest.</p>
     </div>
     <div class="faq reveal">
       <details class="faq__item">
         <summary>“Operation not permitted,” or the tools won't load</summary>
-        <div class="faq__body">This is Claude Science's sandbox denying the folder, not a file-permission error. Grant the exact Motif folder under Customize → Permissions, then fully quit and reopen Claude Science. Pressing Reconnect on its own won't apply a new grant.</div>
+        <div class="faq__body">Claude Science's sandbox is blocking the folder. Grant the exact Motif folder under Customize → Permissions, then fully quit and reopen Claude Science. Reconnect alone does not apply a new grant.</div>
       </details>
       <details class="faq__item">
         <summary>The tool ran, but no workbench appeared</summary>
-        <div class="faq__body">A text summary or resource link proves the tool ran, not that a visible frame mounted. Ask for the generated HTML workbench; it opens as an interactive snapshot in the right pane. Whether Claude Science mounts the live tile automatically depends on your host build.</div>
+        <div class="faq__body">A text summary or resource link means the tool ran. Ask for the generated HTML workbench to see it; it opens in the right pane. Automatic tile mounting depends on your Claude Science build.</div>
       </details>
       <details class="faq__item">
-        <summary>The sequence shows as plain text, not the viewer</summary>
-        <div class="faq__body">The message <span class="mono">Sequence viewer unavailable—showing as text</span> is Claude Science's generic fallback; it doesn't mean Motif rejected the sequence. Open the generated workbench artifact to see it rendered.</div>
+        <summary>The sequence shows as plain text</summary>
+        <div class="faq__body">This is Claude Science's generic fallback display. Open the generated workbench artifact to see the sequence rendered.</div>
       </details>
       <details class="faq__item">
         <summary>The connector shows up, but its tools are missing</summary>
-        <div class="faq__body">Rebuild and reconnect the existing <span class="mono">motif-local</span> entry rather than adding a second one. If a tool's inputs or schema changed, also relaunch Claude Science and start a fresh kernel so the new definition loads.</div>
+        <div class="faq__body">Rebuild, then reconnect the existing <span class="mono">motif-local</span> entry. Do not add a second one. If a tool's inputs or schema changed, relaunch Claude Science and start a fresh kernel so the new definition loads.</div>
       </details>
       <details class="faq__item">
         <summary>Node installed through nvm or asdf gets denied</summary>
-        <div class="faq__body">The sandbox may not reach a Node binary inside a version manager. Prefer a system or Homebrew Node 22.12+. If you keep a version-managed Node, grant its exact folder and rerun setup pointing Motif at that Node binary (the full guide shows the exact command).</div>
+        <div class="faq__body">The sandbox often cannot reach a Node binary inside a version manager. Use a system or Homebrew Node 22.12+. To keep a version-managed Node, grant its exact folder and rerun setup with that Node's path. The full guide shows the command.</div>
       </details>
     </div>
   </div>
