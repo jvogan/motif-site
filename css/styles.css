@@ -241,6 +241,8 @@ figcaption { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-4); 
 .screenshot-window__image { padding: clamp(0.55rem, 1.4vw, 0.85rem); background: var(--dark-2); aspect-ratio: 16 / 9; display: grid; place-items: center; }
 .screenshot-window__image img { width: 100%; height: 100%; object-fit: contain; display: block; border: 1px solid rgba(236,228,214,0.1); border-radius: 10px; box-shadow: 0 12px 28px -18px rgba(0,0,0,0.9); }
 .screenshot-window figcaption { color: var(--cream-text-2); background: var(--dark); border-top-color: var(--line-cream); }
+.video-window { max-width: 60rem; margin: 1.7rem auto 0; }
+.screenshot-window__image video { width: 100%; height: 100%; object-fit: contain; display: block; border: 1px solid rgba(236,228,214,0.1); border-radius: 10px; }
 @media (max-width: 760px) { .screenshot-grid { grid-template-columns: 1fr; } }
 @media (max-width: 840px) { .band { grid-template-columns: 1fr; gap: 2rem; } .band--flip .band__media { order: 0; } .band__copy { max-width: none; } }
 
