@@ -44,10 +44,8 @@
       <span class="brand__for">for Claude Science</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="#how">How it works</a>
       <a href="#watch">Watch</a>
       <a href="#session">See it run</a>
-      <a href="#explore">Explore</a>
       <a href="#capabilities">Capabilities</a>
       <a href="#setup">Get started</a>
       <a class="nav__gh btn btn--ghost btn--sm" href="https://github.com/jvogan/motif">
@@ -128,8 +126,16 @@
     <div class="section-head reveal">
       <span class="eyebrow">Get started</span>
       <h2 id="setup-h">Run Motif in Claude Science.</h2>
-      <p class="lead">Motif runs from a local checkout. You need Node&nbsp;22.12+ and permission for Claude Science to read the Motif folder. A coding agent like Claude&nbsp;Code can run these steps for you.</p>
+      <p class="lead">Motif runs from a local checkout. You need Node&nbsp;22.12+ and permission for Claude Science to read the Motif folder.</p>
     </div>
+    <div class="setup__fast reveal">
+      <span class="setup__fast-tag">Fastest path</span>
+      <h3>Hand it to Claude Code.</h3>
+      <p>Open Claude Code in a new folder and paste this:</p>
+      <pre class="code">Set up Motif for Claude Science from <span class="s">https://github.com/jvogan/motif</span></pre>
+      <p>Claude Code reads the setup guide, clones the repo, installs, and registers the connector. You then grant the folder and reconnect in Claude Science, steps 3 to 5 below.</p>
+    </div>
+    <p class="setup__or reveal">Or run each step yourself.</p>
     <div class="setup reveal">
       <ol class="setup__steps">
         <li class="setup__step">
@@ -147,6 +153,14 @@ cd motif &amp;&amp; npm ci</pre>
         <li class="setup__step">
           <h3>Grant the folder in Claude Science</h3>
           <p>Open Permissions and grant the exact Motif folder.</p>
+          <figure class="figure screenshot-window setup__shot">
+            <div class="screenshot-window__bar" aria-hidden="true"></div>
+            <div class="screenshot-window__image">
+              <img src="assets/shots/permission-access.webp" width="1202" height="680" loading="lazy"
+                   alt="A dialog asking to access the Motif folder on your computer, with read-only and read and write options and Allow and Deny buttons." />
+            </div>
+            <figcaption>Grant the folder as read-only or read and write.</figcaption>
+          </figure>
         </li>
         <li class="setup__step">
           <h3>Relaunch and reconnect</h3>
@@ -154,7 +168,15 @@ cd motif &amp;&amp; npm ci</pre>
         </li>
         <li class="setup__step">
           <h3>Confirm, then try it</h3>
-          <p><span class="mono">motif-local</span> appears under Connectors, in the Custom group. Ask Claude Science to open a sequence, for example <span class="mono">Open pUC19 in Motif</span>. You can type the request or dictate it, so you can drive the bench by voice.</p>
+          <p><span class="mono">motif-local</span> appears under Connectors, in the Custom group. Ask Claude Science to open a sequence, for example <span class="mono">Open pUC19 in Motif</span>. Type your request, or speak it with Claude Science's dictation.</p>
+          <figure class="figure screenshot-window setup__shot">
+            <div class="screenshot-window__bar" aria-hidden="true"></div>
+            <div class="screenshot-window__image">
+              <img src="assets/shots/motif-open-workbench-approval.webp" width="1388" height="710" loading="lazy"
+                   alt="Claude Science asking to run the Motif open workbench tool, with Allow for this project and Deny buttons." />
+            </div>
+            <figcaption>Approve the tool call, or choose how long the approval lasts.</figcaption>
+          </figure>
         </li>
       </ol>
       <aside class="setup__aside">
@@ -272,101 +294,25 @@ cd motif &amp;&amp; npm ci</pre>
   </div>
 </section>
 
-<!-- ============================ THESIS ============================ -->
-<section class="thesis">
-  <div class="container section section--tight thesis__inner">
-    <div class="reveal">
-      <span class="eyebrow">The idea</span>
-      <h2 style="margin-top:1rem">Claude <em class="u">operates</em> the workbench.</h2>
-      <p style="margin-top:1.1rem; max-width:34rem;">Claude adds records, cuts a sequence, or annotates a map. Each change appears as a record you can inspect.</p>
-    </div>
-    <div class="proofs">
-      <div class="proof reveal" data-delay="1">
-        <div class="proof__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></div>
-        <div><h3>Visible artifacts</h3><p>Each operation becomes a record on the bench: a map, a digest, a translated protein.</p></div>
-      </div>
-      <div class="proof reveal" data-delay="2">
-        <div class="proof__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <div><h3>Local-first</h3><p>Motif runs on your machine, with no account and no cloud service.</p></div>
-      </div>
-      <div class="proof reveal" data-delay="3">
-        <div class="proof__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M8 7l8 4M8 17l8-4"/></svg></div>
-        <div><h3>Traceable history</h3><p>Derived records store their parent and the transform that made them. A translated protein links back to its source sequence.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ HOW IT WORKS / PROVENANCE THREAD ============================ -->
-<section class="section" id="how" aria-labelledby="how-h">
+<!-- ============================ SUITE (capabilities promo video) ============================ -->
+<section class="section section--tight" id="suite" aria-labelledby="suite-h">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">How it works</span>
-      <h2 id="how-h">Follow a record from source to export.</h2>
-      <p class="lead">Ask Claude Science to do sequence work. Motif records each step, so you can follow how a result was made.</p>
+      <span class="eyebrow">One workbench</span>
+      <h2 id="suite-h">Maps, alignments, digests, and guide design.</h2>
+      <p class="lead">Motif handles your sequence work in Claude Science. Open genes with circular and linear maps, run restriction digests, translate to protein, align records, and design guides. Every record stays on the same workbench. Plays with sound.</p>
     </div>
-    <div class="lineage__track">
-      <div class="thread" id="thread" aria-hidden="true"><svg preserveAspectRatio="none" viewBox="0 0 2 1000"><path id="threadPath" d="M1 0 L1 1000" /></svg></div>
-      <div class="stages">
-        <div class="stage reveal"><div class="stage__node">01</div><div class="stage__body"><div class="stage__k">Source</div><h3>Bring in a record</h3><p>Paste or import FASTA and GenBank. Motif detects the sequence type, computes GC content, finds ORFs, and maps features.</p><span class="stage__meta">import → pUC19.gb · 2,686 bp · circular</span></div></div>
-        <div class="stage reveal"><div class="stage__node">02</div><div class="stage__body"><div class="stage__k">Inspect</div><h3>Selections stay in sync</h3><p>Click a feature on the circular map and the matching span highlights in the sequence. Select bases and the map updates. Restriction sites, reading frames, and stats stay in sync.</p><span class="stage__meta">select → lacZα · 146-469 · 324 bp</span></div></div>
-        <div class="stage reveal"><div class="stage__node">03</div><div class="stage__body"><div class="stage__k">Derive</div><h3>Transform into new records</h3><p>Translate a CDS, reverse-complement a strand, run a digest, design primers, or plan an assembly. Each result becomes its own record on the bench.</p><span class="stage__meta">translate → GFP protein · 238 aa</span></div></div>
-        <div class="stage reveal"><div class="stage__node">04</div><div class="stage__body"><div class="stage__k">Review</div><h3>Review warnings, then revise</h3><p>Motif flags internal Type&nbsp;IIS sites, impossible cut geometry, and stale primer inputs. Fix the input and recompute the result.</p><span class="stage__meta">flag → internal BsaI site in fragment 2</span></div></div>
-        <div class="stage reveal"><div class="stage__node">05</div><div class="stage__body"><div class="stage__k">Export</div><h3>Export the work</h3><p>Export the record, the annotated map, or the workspace as FASTA, GenBank, or a self-contained file.</p><span class="stage__meta">export → workspace.json · 6 records</span></div></div>
+    <figure class="screenshot-window video-window reveal">
+      <div class="screenshot-window__bar" aria-hidden="true"></div>
+      <div class="screenshot-window__image">
+        <video controls preload="metadata" playsinline
+               poster="assets/video/motif-promo-v7-poster.jpg" width="1920" height="1080">
+          <source src="assets/video/motif-promo-v7.mp4" type="video/mp4" />
+          <p>Your browser cannot play embedded video. <a href="assets/video/motif-promo-v7.mp4">Download the video</a>.</p>
+        </video>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ INTERACTIVE: explore pUC19 (live plasmid map) ============================ -->
-<section class="section bg-parchment" id="explore" aria-labelledby="ex-h">
-  <div class="container band">
-    <div class="band__copy reveal">
-      <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> Live on this page</span>
-      <h2 id="ex-h">The map below is interactive.</h2>
-      <p>This circular map is drawn the same way Motif draws it on the bench: features, restriction sites, and coordinates, all interactive. Hover or focus a feature to read its span, or click to hold a selection.</p>
-      <ul class="band__list">
-        <li>Feature arcs for AmpR, lacZα, the pMB1 origin, and the MCS</li>
-        <li>Unique-cutter restriction ticks around the polylinker</li>
-        <li>The same map Motif draws inside Claude Science</li>
-      </ul>
-    </div>
-    <div class="band__media reveal" data-delay="1">
-      <div class="viz viz--map" id="plasmid-map">
-        <figure class="figure viz__fallback">
-          <img src="assets/banners/02-plasmid-signal.webp" width="1800" height="600"
-               alt="An enlarged pUC19-style circular plasmid map with precise feature arcs and leader lines." loading="lazy" />
-          <figcaption>pUC19 · circular map</figcaption>
-        </figure>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ BAND: prompt to result ============================ -->
-<section class="section" aria-labelledby="b1">
-  <div class="container band">
-  <div class="band__media reveal">
-    <figure class="figure figure--flow">
-      <img class="flow__frame" src="assets/banners/03b-workspace.webp" width="1050" height="530"
-           alt="A Motif workspace: sequence rows with one region selected, a circular plasmid map with colored feature arcs, and enzyme and feature panels." loading="lazy" />
-      <div class="flow__ask">
-        <span class="flow__from">Prompt</span>
-        <span class="flow__text">Open pUC19, find the unique cutters, and select the MCS.</span>
-      </div>
-      <figcaption>Prompt → selection · the instruction becomes a selection on the bench</figcaption>
+      <figcaption>Motif across genes, alignments, and guide design in Claude Science · 0:28</figcaption>
     </figure>
-  </div>
-  <div class="band__copy reveal" data-delay="1">
-    <span class="eyebrow">Prompt to result</span>
-    <h2 id="b1">An instruction returns an object you can inspect.</h2>
-    <p>You type an instruction in Claude Science. Motif turns it into actions on the workspace, and the result is an object you can click, measure, and export.</p>
-    <ul class="band__list">
-      <li>Deterministic functions return the same result for the same inputs</li>
-      <li>Selections carry coordinates, so you know which span was affected</li>
-      <li>Each record carries its own sequence and coordinates</li>
-    </ul>
-  </div>
   </div>
 </section>
 
@@ -539,7 +485,6 @@ cd motif &amp;&amp; npm ci</pre>
       <span class="eyebrow">Advanced</span>
       <h2 id="bridge-h">Read and prepare from an agent.</h2>
       <p>With the bench open, a small browser bridge lets an agent read the active record and prepare new ones. The agent prepares records, you verify them.</p>
-      <a class="btn btn--link" href="#boundaries">Where the line is <span class="arrow" aria-hidden="true">→</span></a>
     </div>
     <div class="band__media reveal" data-delay="1">
       <pre class="code"><span class="c">// read what's on the bench (window.motifHelp() lists them all)</span>
@@ -745,56 +690,6 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
   </div>
 </section>
 
-<!-- ============================ IN YOUR CONTROL ============================ -->
-<section class="section" aria-labelledby="control-h">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Access controls</span>
-      <h2 id="control-h">You choose what Claude can access.</h2>
-      <p class="lead">Motif lets Claude Science run sequence tools and shows the resulting records. You choose the folder, the access level, and whether each request runs.</p>
-    </div>
-    <div class="screenshot-grid">
-      <figure class="figure screenshot-window reveal">
-        <div class="screenshot-window__bar" aria-hidden="true"></div>
-        <div class="screenshot-window__image">
-          <img src="assets/shots/permission-access.webp" width="1202" height="680" loading="lazy"
-               alt="A dialog asking to access the Motif folder on your computer, with read-only and read and write options and Allow and Deny buttons." />
-        </div>
-        <figcaption>Grant the folder as read-only or read and write.</figcaption>
-      </figure>
-      <figure class="figure screenshot-window reveal" data-delay="1">
-        <div class="screenshot-window__bar" aria-hidden="true"></div>
-        <div class="screenshot-window__image">
-          <img src="assets/shots/motif-open-workbench-approval.webp" width="1388" height="710" loading="lazy"
-               alt="Claude Science asking to run the Motif open workbench tool, with Allow for this project and Deny buttons." />
-        </div>
-        <figcaption>Approve each tool call, or choose how long the approval lasts.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ BOUNDARIES ============================ -->
-<section class="section" id="boundaries" aria-labelledby="bnd-h">
-  <div class="container">
-    <div class="honesty reveal">
-      <span class="eyebrow">Scope</span>
-      <h2 id="bnd-h" style="margin-top:1rem; font-size:clamp(1.7rem,1.2rem + 2vw,2.5rem)">What Motif does, and what you do.</h2>
-      <p style="margin-top:1rem; max-width:44rem;">Motif supports sequence design and inspection. Lab testing and expert review happen off the bench.</p>
-      <div class="honesty__grid">
-        <div class="claim claim--do">
-          <h4><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Motif does</h4>
-          <ul><li>Prepare, inspect, and explain sequence records</li><li>Compute analyses deterministically and show each result</li><li>Flag internal cut sites and incompatible cut geometry</li><li>Store each result's parent and transform for tracing</li></ul>
-        </div>
-        <div class="claim claim--dont">
-          <h4><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg> You do</h4>
-          <ul><li>Validate a plan at the lab bench</li><li>Make any clinical or diagnostic call</li><li>Confirm each change before you rely on it</li><li>Get review from a qualified scientist</li></ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============================ CLOSER ============================ -->
 <section class="section closer">
   <div class="container">
@@ -828,8 +723,8 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
     </div>
     <div class="footer__col">
       <h5>Product</h5>
-      <a href="#how">How it works</a>
-      <a href="#explore">Explore the map</a>
+      <a href="#watch">Watch</a>
+      <a href="#session">See it run</a>
       <a href="#capabilities">Capabilities</a>
       <a href="#setup">Get started</a>
     </div>
