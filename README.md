@@ -8,7 +8,12 @@
 
 Plasmid maps, restriction digests, primer design, and cloning plans,
 as an artifact you can open and inspect down to the base pair.
-Runs in your browser. Nothing leaves your device.
+Runs in your browser, with no Motif-hosted backend.
+
+[Live site](https://jvogan.github.io/motif-site/) ·
+[Source and installation](https://github.com/jvogan/motif) ·
+[Current capabilities](https://github.com/jvogan/motif/blob/main/docs/CAPABILITIES.md) ·
+[Security](https://github.com/jvogan/motif/blob/main/SECURITY.md)
 
 <img src="assets/img/hero-workbench.webp" width="860" alt="The Motif workbench: a sequence inventory, a nucleotide sequence pane, and a circular pUC19 plasmid map, in sync." />
 
@@ -23,13 +28,14 @@ Runs in your browser. Nothing leaves your device.
 ## Why Motif
 
 The interesting moment in agentic science isn't a paragraph describing a plasmid.
-It's watching the agent change a real workspace, then being able to inspect every
-result yourself.
+It's receiving a concrete, reviewable workspace artifact and being able to
+inspect every result yourself.
 
 - **Visible artifacts.** Every step lands as a record on the bench: a map, a
   digest, a translated protein, not a wall of text.
 - **Local-first.** The whole workbench is a single self-contained file that runs
-  in your browser. No cloud round-trip, no account.
+  in your browser. Motif has no hosted service; content supplied to Claude
+  Science remains subject to your Claude and organization data policies.
 - **Auditable lineage.** Derived records remember their parent and how they were
   made, so you can trace a protein back to the bases it came from.
 
@@ -38,26 +44,32 @@ result yourself.
 | Read & inspect | Cut & clone | Analyze | Transform |
 | --- | --- | --- | --- |
 | Circular & linear maps | Restriction digest (153 enzymes) | Six-frame ORF detection | Translation |
-| Feature annotations | Primer design (Tm / GC) | Codon optimization (*E. coli*, human, yeast) | Reverse complement |
-| Reading-frame overlays | Gibson & Golden Gate | Needleman–Wunsch alignment | Reverse translation |
-| Live GC & length stats | PCR simulation | IUPAC motif search | Parent & derivation notes |
+| Feature annotations | Primer design (Tm / GC) | NCBI genetic-code selection | Reverse complement |
+| Reading-frame overlays | Gibson & Golden Gate | Browser MSA | Derived protein records |
+| Live GC & length stats | PCR simulation | IUPAC motif search | Parent & provenance notes |
 
-Import and export FASTA, GenBank, and raw sequence, plus a portable self-contained
-workspace snapshot.
+Import and export FASTA, GenBank, and raw sequence. Database JSON is directly
+restorable; workspace ZIP and self-contained HTML are portable handoffs.
 
 ## Try it
 
-The whole workbench is one self-contained file that starts with **pUC19** loaded.
-No install, no sign-in.
+Build the current workbench from the public source repository:
 
 ```bash
-open assets/artifact/index.html      # or double-click it
+git clone https://github.com/jvogan/motif.git
+cd motif
+npm ci
+npm run preview:motif
 ```
+
+Open `preview/motif-artifact.html`. For Claude Science connector setup and the
+public synthetic smoke record, follow the
+[installation guide](https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_QUICKSTART.md).
 
 <div align="center">
 <img src="assets/mascot/crab.webp" width="120" alt="Motif's lab-crab mascot" />
 
-*Not sure where to start? Paste one of these into Claude Science with Motif open:*
+*Not sure where to start? Use one of these after opening a Motif workbench:*
 </div>
 
 - `Open pUC19 and highlight the unique cutters.` → a map with single-cut enzymes flagged
@@ -67,8 +79,8 @@ open assets/artifact/index.html      # or double-click it
 
 ## Run the landing page locally
 
-This repo is the Motif landing site (a static, no-build site) plus the
-self-contained artifact under `assets/`.
+This repo is the Motif landing site. It is static and has no build step; the
+current product source and distributable build live in `jvogan/motif`.
 
 ```bash
 python3 -m http.server 4178

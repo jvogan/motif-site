@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Motif: a molecular-biology bench for Claude Science</title>
-  <meta name="description" content="Motif is a Claude Science plugin that turns a conversation into a molecular-biology workbench (plasmid maps, restriction digests, primer design, and cloning plans) you can inspect down to the base pair, all inside Claude Science. Runs locally; nothing leaves your device." />
+  <meta name="description" content="Motif is a local-first molecular-biology workbench for Claude Science: inspect maps and sequences, review alignments, design primers and cloning plans, and export portable artifacts. Motif has no hosted backend." />
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#FAF9F5" />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
@@ -76,7 +76,7 @@
       </div>
       <div class="hero__trust">
         <span><i class="dot"></i> Runs in your browser</span>
-        <span><i class="dot"></i> Nothing leaves your device</span>
+        <span><i class="dot"></i> No Motif-hosted backend</span>
         <span><i class="dot"></i> MIT licensed</span>
       </div>
     </div>
@@ -218,8 +218,8 @@ cd motif &amp;&amp; npm ci</pre>
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> A worked example</span>
-      <h2 id="ses-h">One prompt loads a pathway onto the bench.</h2>
-      <p class="lead">In one Claude Science session, ask it to open a pathway. Motif fetches the genes, loads them as records, and aligns the ones you choose.</p>
+      <h2 id="ses-h">One prompt prepares a pathway workbench.</h2>
+      <p class="lead">In one Claude Science session, ask Claude to find public pathway records and create a Motif artifact. Motif validates and displays the supplied records; external data retrieval remains outside the workbench.</p>
     </div>
     <ol class="session">
       <li class="session__step reveal">
@@ -355,11 +355,11 @@ cd motif &amp;&amp; npm ci</pre>
   <div class="band__copy reveal" data-delay="1">
     <span class="eyebrow">Analysis</span>
     <h2 id="b3">Translate and analyze a sequence.</h2>
-    <p>Translate a reading frame, optimize codons for <em>E.&nbsp;coli</em>, human, or yeast, align two sequences, or scan for a motif. Each derived record stores its parent and the transform that made it.</p>
+    <p>Translate a selected range or coding feature with a supported NCBI genetic code, inspect ORFs and sequence statistics, or scan for a literal motif or PAM-based guide candidate. Derived proteins retain their source and effective genetic code.</p>
     <ul class="band__list">
-      <li>Six-frame ORF detection, GC plots, and codon-usage analysis</li>
-      <li>Needleman-Wunsch pairwise alignment and IUPAC motif search</li>
-      <li>Translation, reverse complement, and reverse translation</li>
+      <li>Six-frame ORF detection, GC, composition, Tm, and molecular weight</li>
+      <li>Record- and feature-level NCBI genetic-code selection</li>
+      <li>Translation, reverse complement, motif search, and guide candidates</li>
     </ul>
   </div>
   </div>
@@ -371,7 +371,7 @@ cd motif &amp;&amp; npm ci</pre>
   <div class="container">
     <div class="showcase__intro reveal">
       <span class="eyebrow eyebrow--onDark"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> Inside Claude Science</span>
-      <h2 id="sc-h">Follow the changes Claude makes.</h2>
+      <h2 id="sc-h">Inspect every artifact Claude prepares.</h2>
     </div>
     <div class="showcase__grid">
       <div class="showcase__panel reveal">
@@ -392,7 +392,7 @@ cd motif &amp;&amp; npm ci</pre>
         </div>
         <div class="acc">
           <button class="acc__btn" aria-expanded="false" aria-controls="acc-p2"><h3>Built-in sequence renderers</h3><span class="acc__ic" aria-hidden="true"></span></button>
-          <div class="acc__panel" id="acc-p2" role="region"><div class="acc__inner">Circular and linear maps, sequence panes, digests, and protein views render in the browser. A bridge lets Claude read the underlying records.</div></div>
+          <div class="acc__panel" id="acc-p2" role="region"><div class="acc__inner">Circular and linear maps, sequence panes, digests, and protein views render in the browser. The connector accepts bounded records and returns a reviewable workbench or portable HTML snapshot.</div></div>
         </div>
         <div class="acc">
           <button class="acc__btn" aria-expanded="false" aria-controls="acc-p3"><h3>Built-in checks</h3><span class="acc__ic" aria-hidden="true"></span></button>
@@ -400,7 +400,7 @@ cd motif &amp;&amp; npm ci</pre>
         </div>
         <div class="acc">
           <button class="acc__btn" aria-expanded="false" aria-controls="acc-p4"><h3>Iterate in plain language</h3><span class="acc__ic" aria-hidden="true"></span></button>
-          <div class="acc__panel" id="acc-p4" role="region"><div class="acc__inner">“Trim the 5′ UTR, re-screen the cutters, and translate the new frame.” Motif turns the instruction into workbench actions you can review.</div></div>
+          <div class="acc__panel" id="acc-p4" role="region"><div class="acc__inner">Ask Claude to prepare revised public-safe inputs, then create a newly named Motif artifact. Review the resulting snapshot before treating any proposed change as accepted.</div></div>
         </div>
         <div class="acc">
           <button class="acc__btn" aria-expanded="false" aria-controls="acc-p5"><h3>Export the work</h3><span class="acc__ic" aria-hidden="true"></span></button>
@@ -417,14 +417,14 @@ cd motif &amp;&amp; npm ci</pre>
     <div class="section-head reveal">
       <span class="eyebrow">Capabilities</span>
       <h2 id="cap-h">Read, cut, analyze, and export, on one bench.</h2>
-      <p class="lead">The bioinformatics functions are deterministic. They run the same whether you click them or Claude does.</p>
+      <p class="lead">Motif's built-in functions are deterministic and run locally in the HTML. Native alignment engines run only through the explicit no-shell helper outside the browser.</p>
     </div>
 
     <div class="stats">
       <div class="stat reveal"><b class="tnum">153</b><span>built-in restriction enzymes</span></div>
       <div class="stat reveal" data-delay="1"><b class="tnum">6</b><span>reading frames, always analyzed</span></div>
-      <div class="stat reveal" data-delay="2"><b class="tnum">3</b><span>codon tables: <em>E. coli</em>, human, yeast</span></div>
-      <div class="stat reveal" data-delay="3"><b class="tnum">100%</b><span>in-browser, no server or upload</span></div>
+      <div class="stat reveal" data-delay="2"><b class="tnum">24</b><span>supported NCBI genetic codes</span></div>
+      <div class="stat reveal" data-delay="3"><b class="tnum">0</b><span>Motif-hosted servers required</span></div>
     </div>
 
     <div class="caps">
@@ -441,12 +441,12 @@ cd motif &amp;&amp; npm ci</pre>
       <div class="cap reveal" data-delay="2">
         <div class="cap__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 2 4-6"/></svg></div>
         <h3>Analyze</h3><p>Common measurements, computed the same way each time.</p>
-        <ul><li>Six-frame ORF detection</li><li>Codon optimization</li><li>Pairwise alignment</li><li>IUPAC motif search</li></ul>
+        <ul><li>Six-frame ORF detection</li><li>GC, Tm &amp; composition</li><li>NCBI genetic-code selection</li><li>IUPAC motif search</li></ul>
       </div>
       <div class="cap reveal">
         <div class="cap__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg></div>
         <h3>Transform</h3><p>Turn one record into another and keep its history.</p>
-        <ul><li>Translation</li><li>Reverse complement</li><li>Reverse translation</li><li>Parent &amp; derivation notes</li></ul>
+        <ul><li>Range &amp; feature translation</li><li>Reverse complement</li><li>Derived protein records</li><li>Parent &amp; provenance notes</li></ul>
       </div>
       <div class="cap reveal" data-delay="1">
         <div class="cap__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg></div>
@@ -455,8 +455,8 @@ cd motif &amp;&amp; npm ci</pre>
       </div>
       <div class="cap reveal" data-delay="2">
         <div class="cap__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 20h10M8 8l2 2-2 2M13 12h3"/></svg></div>
-        <h3>Agent bridge</h3><p>A small bridge lets Claude read and prepare what's on the bench.</p>
-        <ul><li>Read the active record</li><li>Inspect a selection</li><li>Prepare records &amp; digests</li><li>Explain what it found</li></ul>
+        <h3>Claude intake</h3><p>Two narrow connector tools prepare a bounded viewer or portable artifact.</p>
+        <ul><li>FASTA, GenBank &amp; raw sequence</li><li>Validated Motif payloads</li><li>Read-only viewer/export tools</li><li>No generic DOM or shell bridge</li></ul>
       </div>
     </div>
   </div>
@@ -483,14 +483,13 @@ cd motif &amp;&amp; npm ci</pre>
   <div class="container band">
     <div class="band__copy reveal">
       <span class="eyebrow">Advanced</span>
-      <h2 id="bridge-h">Read and prepare from an agent.</h2>
-      <p>With the bench open, a small browser bridge lets an agent read the active record and prepare new ones. The agent prepares records, you verify them.</p>
+      <h2 id="bridge-h">Inspect the page-local API.</h2>
+      <p>The standalone workbench exposes bounded page-local functions for verified browser automation. The Claude Science connector does not expose these functions as a generic browser bridge.</p>
     </div>
     <div class="band__media reveal" data-delay="1">
-      <pre class="code"><span class="c">// read what's on the bench (window.motifHelp() lists them all)</span>
-window.<span class="k">motifGetActiveRecord</span>()
-<span class="c">// prepare derived records</span>
-window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre>
+      <pre class="code"><span class="c">// inspect the page-local contract and active record</span>
+window.<span class="k">motifHelp</span>()
+window.<span class="k">motifGetActiveRecord</span>()</pre>
     </div>
   </div>
 </section>
@@ -536,7 +535,7 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
     <div class="section-head reveal">
       <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> One session, end to end</span>
       <h2 id="fp-h">From a paper to a Motif alignment.</h2>
-      <p class="lead">Point Claude Science at a paper and ask for its genes. It fetches the records into Motif. Ask it to add homologs and run a multiple sequence alignment.</p>
+      <p class="lead">Point Claude Science at a paper and ask it to find public records, then create a Motif artifact from the complete retrieved data. Follow-up requests create newly generated snapshots rather than silently changing a saved artifact.</p>
     </div>
     <ol class="session">
       <li class="session__step reveal">
@@ -595,7 +594,7 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
           <span class="session__num" aria-hidden="true">04</span>
           <div class="session__caption">
             <h3>Iterate and add more</h3>
-            <p>Ask for more in the same conversation. It pulls two more crtE and two more FPS homologs from UniProt and adds them. The workbench then holds six records.</p>
+            <p>Ask for more in the same conversation. Claude retrieves two additional crtE and two additional FPS homologs from UniProt, then creates a newly generated workbench containing all six records.</p>
           </div>
         </div>
         <figure class="figure screenshot-window">
@@ -612,7 +611,7 @@ window.<span class="k">motifAddRecords</span>([<span class="s">…</span>])</pre
           <span class="session__num" aria-hidden="true">05</span>
           <div class="session__caption">
             <h3>Align and read it in Motif</h3>
-            <p>Ask for a multiple sequence alignment. Claude Science installs Clustal Omega, aligns the six proteins, and loads the CLUSTAL result into Motif's MSA viewer.</p>
+            <p>Ask for a multiple sequence alignment. Claude Science runs Clustal Omega outside Motif's HTML, then creates a fresh artifact with the validated CLUSTAL output loaded into Motif's MSA viewer.</p>
           </div>
         </div>
         <figure class="figure screenshot-window">
