@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Motif: a molecular-biology workbench for Claude Science</title>
+  <meta name="description" content="Motif is a molecular-biology workbench that runs inside Claude Science. Open sequence records, annotate them, align them, translate them, screen restriction enzymes, design primers and guides, and export GenBank or a self-contained workspace file. Open source, MIT-licensed, and it runs in your browser." />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#FAF9F5" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://jvogan.github.io/motif-site/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jvogan.github.io/motif-site/" />
+  <meta property="og:title" content="Motif: a molecular-biology workbench for Claude Science" />
+  <meta property="og:description" content="Ask Claude Science for sequence work, and Motif opens the records, maps, and analyses in the pane beside the chat. Runs in your browser, MIT-licensed." />
+  <meta property="og:image" content="https://jvogan.github.io/motif-site/assets/img/motif-banner.png" />
+  <meta property="og:image:width" content="1280" />
+  <meta property="og:image:height" content="640" />
+  <meta property="og:image:alt" content="The Motif banner: the word Motif and the line “A molecular biology workbench for Claude Science”, beside a circular plasmid map, a DNA double helix, and sequence lettering on a cream background." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Motif: a molecular-biology workbench for Claude Science" />
+  <meta name="twitter:image" content="https://jvogan.github.io/motif-site/assets/img/motif-banner.png" />
+  <meta name="twitter:image:alt" content="The Motif banner: the word Motif and the line “A molecular biology workbench for Claude Science”, beside a circular plasmid map, a DNA double helix, and sequence lettering on a cream background." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="#top" aria-label="Motif home">
+      <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M12.09 47.35 A38 38 0 0 1 46.03 12.21" stroke="#C0603C" stroke-width="11" stroke-linecap="round"/>
+        <path d="M61.74 13.86 A38 38 0 0 1 87.17 57.90" stroke="#7F9270" stroke-width="11" stroke-linecap="round"/>
+        <path d="M79.94 73.40 A38 38 0 0 1 40.81 86.87" stroke="#C0603C" stroke-width="11" stroke-linecap="round"/>
+        <path d="M25.57 79.11 A38 38 0 0 1 14.29 63.00" stroke="#C79A44" stroke-width="11" stroke-linecap="round"/>
+      </svg>
+      Motif
+      <span class="brand__for">for Claude Science</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#promo">Watch</a>
+      <a href="#session">Worked example</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#setup">Get started</a>
+      <a class="nav__gh btn btn--ghost btn--sm" href="https://github.com/jvogan/motif">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9l-.01 2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="ambient-host" data-ambient="light" aria-hidden="true"></div>
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow">
+        <svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg>
+        Molecular biology
+      </span>
+      <h1 id="hero-h">Motif is a molecular-biology workbench <em>inside Claude Science.</em></h1>
+      <p class="hero__lead">Open a sequence, annotate it, align it against others, translate it, or compute its reverse complement — without leaving Claude Science. If you need an enzyme, codon table, or analysis Motif doesn't have, ask Claude to add it.</p>
+      <div class="motif-strip" id="motifStrip" aria-hidden="true"></div>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#setup">Set up in Claude Science</a>
+        <a class="btn btn--ghost" href="https://github.com/jvogan/motif">View on GitHub</a>
+      </div>
+      <div class="hero__trust">
+        <span><i class="dot"></i> Runs in your browser</span>
+        <span><i class="dot"></i> Open source · MIT</span>
+        <span><i class="dot"></i> Claude can add tools</span>
+      </div>
+    </div>
+
+    <div class="hero__stage reveal">
+      <img class="hero__crab" src="assets/mascot/crab.webp" width="172" height="158" alt="" aria-hidden="true" />
+      <div class="panel">
+        <div class="panel__inner">
+          <img src="assets/img/hero-workbench.webp" width="1800" height="600"
+               alt="The Motif workbench: a three-pane view with a sequence inventory, a nucleotide sequence pane, and a circular pUC19 plasmid map with labeled features, on a warm cream background." />
+        </div>
+      </div>
+      <div class="hero__chip" aria-hidden="true">
+        <i class="pulse"></i>
+        <span><span class="mono">pUC19</span> · 2,686 bp · map, sequence &amp; features in sync</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROMO (main video) ============================ -->
+<section class="section section--tight bg-parchment" id="promo" aria-labelledby="promo-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Watch</span>
+      <h2 id="promo-h">Ask Claude Science for an analysis, and Motif opens the result.</h2>
+      <p class="lead">Claude annotates the common KRAS hotspot mutations in Motif, aligns them, and places CRISPR guide sequences on the map. It then reads a paper describing the vanillin pathway's final enzyme and builds that enzyme as a gene cassette. Plays with sound.</p>
+    </div>
+    <figure class="screenshot-window video-window reveal">
+      <div class="screenshot-window__bar" aria-hidden="true"></div>
+      <div class="screenshot-window__image">
+        <video controls preload="metadata" playsinline
+               poster="assets/video/motif-claude-science-session-poster.jpg" width="1920" height="1080">
+          <source src="assets/video/motif-claude-science-session.mp4" type="video/mp4" />
+          <p>Your browser cannot play embedded video. <a href="assets/video/motif-claude-science-session.mp4">Download the video</a>.</p>
+        </video>
+      </div>
+      <figcaption>A Claude Science session &middot; 2:21, with voiceover</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ GET STARTED (setup, near top) ============================ -->
+<section class="section section--tight" id="setup" aria-labelledby="setup-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Get started</span>
+      <h2 id="setup-h">Run Motif in Claude Science.</h2>
+      <p class="lead">Motif runs from a local checkout. You need Node&nbsp;22.12+ and permission for Claude Science to read the Motif folder.</p>
+    </div>
+    <div class="setup__fast reveal">
+      <span class="setup__fast-tag">Fastest path</span>
+      <h3>Hand it to Claude Code.</h3>
+      <p>Open Claude Code in a new folder and paste this:</p>
+      <pre class="code">Set up Motif for Claude Science from <span class="s">https://github.com/jvogan/motif</span></pre>
+      <p>Claude Code reads the setup guide, clones the repo, installs dependencies, and registers the connector. You then grant the folder and reconnect in Claude Science — steps 3 to 5 below.</p>
+    </div>
+    <p class="setup__or reveal">Or run each step yourself.</p>
+    <div class="setup reveal">
+      <ol class="setup__steps">
+        <li class="setup__step">
+          <h3>Get the code</h3>
+          <p>Clone the repository and install dependencies.</p>
+          <pre class="code"><span class="c"># needs Node 22.12+</span>
+git clone <span class="s">https://github.com/jvogan/motif</span>
+cd motif &amp;&amp; npm ci</pre>
+        </li>
+        <li class="setup__step">
+          <h3>Build and register the connector</h3>
+          <p>One command builds Motif and adds the local connector.</p>
+          <pre class="code">npm run <span class="p">claude-science:setup</span></pre>
+        </li>
+        <li class="setup__step">
+          <h3>Grant the folder in Claude Science</h3>
+          <p>Open Permissions and grant the exact Motif folder.</p>
+          <figure class="figure screenshot-window setup__shot">
+            <div class="screenshot-window__bar" aria-hidden="true"></div>
+            <div class="screenshot-window__image">
+              <img src="assets/shots/permission-access.webp" width="1202" height="680" loading="lazy"
+                   alt="A dialog asking to access the Motif folder on your computer, with read-only and read and write options and Allow and Deny buttons." />
+            </div>
+            <figcaption>Grant the folder as read-only or read and write.</figcaption>
+          </figure>
+        </li>
+        <li class="setup__step">
+          <h3>Relaunch and reconnect</h3>
+          <p>Fully quit and reopen Claude Science, then reconnect <span class="mono">motif-local</span>.</p>
+        </li>
+        <li class="setup__step">
+          <h3>Confirm, then try it</h3>
+          <p><span class="mono">motif-local</span> appears under Connectors, in the Custom group. Ask Claude Science to open a sequence — for example, <span class="mono">Open pUC19 in Motif</span>.</p>
+          <figure class="figure screenshot-window setup__shot">
+            <div class="screenshot-window__bar" aria-hidden="true"></div>
+            <div class="screenshot-window__image">
+              <img src="assets/shots/motif-open-workbench-approval.webp" width="1388" height="545" loading="lazy"
+                   alt="Claude Science asking to run the Motif open workbench tool, with Allow for this project and Deny buttons." />
+            </div>
+            <figcaption>Approve the tool call, or choose how long the approval lasts.</figcaption>
+          </figure>
+        </li>
+      </ol>
+      <aside class="setup__aside">
+        <div class="setup__links">
+          <a class="btn btn--primary" href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_QUICKSTART.md">Setup guide</a>
+          <a class="btn btn--ghost" href="#connect">See the connector screens</a>
+          <a class="btn btn--link" href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_TROUBLESHOOTING.md">Troubleshooting <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--link" href="https://github.com/jvogan/motif">View source on GitHub <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ WATCH ============================ -->
+<section class="section section--tight" id="watch" aria-labelledby="watch-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The workbench</span>
+      <h2 id="watch-h">Motif opens pUC19 with its sequence and circular map in sync.</h2>
+      <p class="lead">Add a feature, search for a sequence pattern, mark the restriction sites, design CRISPR guides, and export it. Plays with sound.</p>
+    </div>
+    <figure class="screenshot-window video-window reveal">
+      <div class="screenshot-window__bar" aria-hidden="true"></div>
+      <div class="screenshot-window__image">
+        <video controls preload="metadata" playsinline
+               poster="assets/video/motif-workbench-tour-poster.jpg" width="1920" height="1080">
+          <source src="assets/video/motif-workbench-tour.mp4" type="video/mp4" />
+          <p>Your browser cannot play embedded video. <a href="assets/video/motif-workbench-tour.mp4">Download the video</a>.</p>
+        </video>
+      </div>
+      <figcaption>The Motif workbench on pUC19 · 1:37, with voiceover</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ REAL SESSION (product screenshots) ============================ -->
+<section class="section" id="session" aria-labelledby="ses-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> A worked example</span>
+      <h2 id="ses-h">One prompt loads a pathway's 44 proteins.</h2>
+      <p class="lead">Ask Claude Science to find a pathway's genes and open them in Motif. Inspect the proteins, then align the ones you choose.</p>
+    </div>
+    <ol class="session">
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">01</span>
+          <div class="session__caption">
+            <h3>Ask for the pathway</h3>
+            <p>Give Claude Science a UniProt entry. It identifies BCO1, finds its Reactome pathway (retinoid metabolism and transport), and fetches the participating genes.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-fetch-pathway.webp" width="1468" height="810" loading="lazy"
+                 alt="Claude Science reading a UniProt link, identifying BCO1 and its retinoid-metabolism Reactome pathway, and fetching the pathway's genes." />
+          </div>
+          <figcaption>UniProt Q9HAY6 → Reactome R-HSA-975634 · retinoid metabolism</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">02</span>
+          <div class="session__caption">
+            <h3>Load the pathway's proteins</h3>
+            <p>Claude loads their 44 protein sequences. GPC1's 558-residue sequence and protein map open in the workbench.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/motif-pathway-genes-loaded.webp" width="1714" height="1352" loading="lazy"
+                 alt="The Motif workbench with 44 pathway proteins in the inventory and GPC1's amino-acid sequence and protein map open." />
+          </div>
+          <figcaption>44 proteins · GPC1 (P35052) · 558 aa</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">03</span>
+          <div class="session__caption">
+            <h3>Align the proteins</h3>
+            <p>Select the proteins you want and run a multiple sequence alignment in the browser, or export them to MAFFT, MUSCLE, or Clustal Omega.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/motif-pathway-msa.webp" width="1300" height="1187" loading="lazy"
+                 alt="Motif's Multiple Sequence Alignment dialog with pathway proteins selected and options to align in the browser or export to external aligners." />
+          </div>
+          <figcaption>Align in browser · or MAFFT / MUSCLE / Clustal Omega</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">04</span>
+          <div class="session__caption">
+            <h3>Read the alignment</h3>
+            <p>Motif saves the BCO1–GPC1 alignment alongside its source sequences: 592 columns with conserved positions, a consensus row, and per-column differences. You can export it as aligned FASTA.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/motif-msa-result.webp" width="2000" height="1593" loading="lazy"
+                 alt="A rendered multiple sequence alignment of BCO1 against GPC1: 592 columns with conserved positions, a consensus row, and per-column differences." />
+          </div>
+          <figcaption>BCO1 vs GPC1 · 592 columns · 20% conserved · export aligned FASTA</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ SUITE (capabilities promo video) ============================ -->
+<section class="section section--tight" id="suite" aria-labelledby="suite-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Overview</span>
+      <h2 id="suite-h">Map a plasmid, annotate its features, and translate its genes.</h2>
+      <p class="lead">Ask Claude for a sequence and it opens in Motif as a circular or linear map. Add and edit features on the sequence, see every restriction site marked, and translate a gene to protein in frame. Plays with sound.</p>
+    </div>
+    <figure class="screenshot-window video-window reveal">
+      <div class="screenshot-window__bar" aria-hidden="true"></div>
+      <div class="screenshot-window__image">
+        <video controls preload="metadata" playsinline
+               poster="assets/video/motif-promo-poster.jpg" width="1920" height="1080">
+          <source src="assets/video/motif-promo.mp4" type="video/mp4" />
+          <p>Your browser cannot play embedded video. <a href="assets/video/motif-promo.mp4">Download the video</a>.</p>
+        </video>
+      </div>
+      <figcaption>pUC19 in the Motif workbench &middot; 0:35</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ BAND: restriction cartography (flipped) ============================ -->
+<section class="section bg-parchment" aria-labelledby="b2">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cloning &amp; maps</span>
+      <h2 id="b2">Plan a construct before you build it.</h2>
+      <p class="lead">Screen a plasmid against 154 built-in restriction enzymes, plus any Claude adds. Find the unique cutters, preview the fragments, and plan a Gibson or Golden&nbsp;Gate assembly with internal Type&nbsp;IIS sites flagged.</p>
+    </div>
+    <figure class="figure screenshot-window reveal cloning-window">
+      <div class="screenshot-window__bar" aria-hidden="true"></div>
+      <div class="screenshot-window__image">
+        <img src="assets/shots/claude-science-restriction-digest.webp" width="1558" height="1398" loading="lazy"
+             alt="The Motif workbench on an 11,429 bp record: named restriction sites (HpaII/MspI, TaqI, HaeIII, AluI, XhoI) marked on the sequence, a linear map covered in restriction ticks with the crtE feature, and a digest preview reading 13 cuts and 14 fragments across 292 sites and 34 enzymes." />
+      </div>
+      <figcaption>crtE (DQ012943) · 292/292 sites, 34 enzymes · digest preview 13 cuts, 14 fragments</figcaption>
+    </figure>
+    <ul class="band__list cloning-list reveal" data-delay="1">
+      <li>Restriction digest with fragment sizes and cut positions</li>
+      <li>Primer design with Tm / GC tuning and enzyme-tail presets</li>
+      <li>Gibson &amp; Golden Gate planning with compatible-overhang checks</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ CAPABILITIES ============================ -->
+<section class="section" id="capabilities" aria-labelledby="cap-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Capabilities</span>
+      <h2 id="cap-h">Motif runs its analyses in your browser.</h2>
+      <p class="lead">Claude adds enzymes, codon tables, and new analyses on request.</p>
+    </div>
+
+    <div class="caps">
+      <div class="cap reveal">
+        <div class="cap__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 3a14 14 0 0 0 0 18M12 3a14 14 0 0 1 0 18M3 12h18"/></svg></div>
+        <h3>Read &amp; inspect</h3><p>The map and the sequence stay in sync.</p>
+        <ul><li>Circular plasmid maps</li><li>Feature annotations</li><li>Reading-frame overlays</li><li>Live GC &amp; length stats</li></ul>
+      </div>
+      <div class="cap reveal" data-delay="1">
+        <div class="cap__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="8" cy="7" r="1.6" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="10" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Cut &amp; clone</h3><p>Plan a construct and check it for conflicts.</p>
+        <ul><li>Restriction digest</li><li>Primer design (Tm / GC)</li><li>Gibson &amp; Golden Gate</li><li>PCR simulation</li></ul>
+      </div>
+      <div class="cap reveal" data-delay="2">
+        <div class="cap__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 2 4-6"/></svg></div>
+        <h3>Analyze</h3><p>The same sequence gives the same numbers every time.</p>
+        <ul><li>Six-frame ORF detection</li><li>GC, Tm &amp; composition</li><li>NCBI genetic-code selection</li><li>Motif search, both strands</li></ul>
+      </div>
+      <div class="cap reveal">
+        <div class="cap__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg></div>
+        <h3>Transform</h3><p>Turn one sequence into another and keep its history.</p>
+        <ul><li>Range &amp; feature translation</li><li>Reverse complement</li><li>Derived protein sequences</li><li>Parent &amp; provenance notes</li></ul>
+      </div>
+      <div class="cap reveal" data-delay="1">
+        <div class="cap__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg></div>
+        <h3>Import &amp; export</h3><p>Read and write FASTA and GenBank, or save the workspace as one file.</p>
+        <ul><li>FASTA</li><li>GenBank</li><li>Raw sequence</li><li>Self-contained workspace</li></ul>
+      </div>
+      <div class="cap reveal" data-delay="2">
+        <div class="cap__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 20h10M8 8l2 2-2 2M13 12h3"/></svg></div>
+        <h3>How Claude connects</h3><p>Two connector tools open your sequences as a workbench, or save them as one HTML file.</p>
+        <ul><li>FASTA, GenBank &amp; raw sequence</li><li>Workbench or a single HTML file</li><li>Inspect and export results</li><li>Claude adds enzymes, codon tables &amp; analyses</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ADVANCED: browser bridge ============================ -->
+<section class="section" id="bridge" aria-labelledby="bridge-h">
+  <div class="container band">
+    <div class="band__copy reveal">
+      <span class="eyebrow">Advanced</span>
+      <h2 id="bridge-h">Script the standalone workbench.</h2>
+      <p>The standalone workbench exposes a documented page-local API: scripts can read the sequence on screen, load new records, and run their own checks.</p>
+    </div>
+    <div class="band__media reveal" data-delay="1">
+      <pre class="code"><span class="c">// inspect the page-local contract and active record</span>
+window.<span class="k">motifHelp</span>()
+window.<span class="k">motifGetActiveRecord</span>()</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONNECT IN CLAUDE SCIENCE ============================ -->
+<section class="section section--tight" id="connect" aria-labelledby="cn-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">In Claude Science</span>
+      <h2 id="cn-h">Motif runs as a local connector in Claude Science.</h2>
+      <p class="lead"><span class="mono">npm run claude-science:setup</span> registers the server. Grant the folder, choose how approvals work, then ask Claude Science to open a sequence.</p>
+    </div>
+    <div class="connect reveal">
+      <div class="connect__item">
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-motif-local-connected.webp" width="1460" height="230" loading="lazy"
+                 alt="The Claude Science Connectors list, Custom group, showing motif-local added and enabled." />
+          </div>
+          <figcaption>Connectors → Custom · motif-local, enabled</figcaption>
+        </figure>
+        <p class="connect__note">Setup adds one connector, <span class="mono">motif-local</span>, under Connectors in the Custom group.</p>
+      </div>
+      <div class="connect__item">
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-skip-approvals.webp" width="1519" height="712" loading="lazy"
+                 alt="The motif-local connector detail in Claude Science: a Skip approvals toggle and two read-only tools, motif_open_workbench and motif_create_workbench_artifact." />
+          </div>
+          <figcaption>motif-local · approvals and its two tools</figcaption>
+        </figure>
+        <p class="connect__note">Open <span class="mono">motif-local</span> to see its two tools, <span class="mono">motif_open_workbench</span> and <span class="mono">motif_create_workbench_artifact</span>. Leave approvals on and Claude Science shows a card before each call. Turn on <strong>Skip approvals</strong> to run them without prompting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FROM A PAPER (walkthrough) ============================ -->
+<section class="section section--tight bg-parchment" id="from-paper" aria-labelledby="fp-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><svg class="ast" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5c.45 4.6 1.7 7.2 4.2 8.5 1.45.78 3.4 1.3 6.3 1.5-2.9.2-4.85.72-6.3 1.5-2.5 1.3-3.75 3.9-4.2 8.5-.45-4.6-1.7-7.2-4.2-8.5-1.45-.78-3.4-1.3-6.3-1.5 2.9-.2 4.85-.72 6.3-1.5 2.5-1.3 3.75-3.9 4.2-8.5Z"/></svg> One session</span>
+      <h2 id="fp-h">Claude reads a paper and aligns its genes in Motif.</h2>
+      <p class="lead">Paste a paper into Claude Science and ask Claude to open the genes it describes in Motif. Then ask for the same genes from other species, and for an alignment comparing them.</p>
+    </div>
+    <ol class="session">
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">01</span>
+          <div class="session__caption">
+            <h3>Ask in plain language</h3>
+            <p>Paste a paper and ask Claude Science to open its genes in Motif.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-ask-paper.webp" width="1351" height="388" loading="lazy"
+                 alt="A Claude Science prompt asking it to open the genes characterized in a PLOS ONE paper in Motif." />
+          </div>
+          <figcaption>PLOS ONE · 10.1371/journal.pone.0096626</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">02</span>
+          <div class="session__caption">
+            <h3>Claude identifies and fetches</h3>
+            <p>It reads the paper, identifies the two characterized genes, FPS and crtE, and fetches their annotated GenBank records from NCBI.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-curate-genes.webp" width="1540" height="1519" loading="lazy"
+                 alt="Claude Science listing FPS (KJ140284.1) and crtE (DQ012943.1) with their enzymes and lengths, and reporting the workbench opened with 2 records and 14,314 residues." />
+          </div>
+          <figcaption>FPS KJ140284.1 · crtE DQ012943.1 · 14,314 residues</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">03</span>
+          <div class="session__caption">
+            <h3>Open in the Motif viewer</h3>
+            <p>Both genes open in the workbench. The Inventory panel lists them; Sequence and Map show whichever one you select, with restriction sites and gene, mRNA, and CDS features.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-motif-viewer.webp" width="2000" height="1063" loading="lazy"
+                 alt="The Motif workbench open in Claude Science's right pane: the crtE record (DQ012943), its sequence with restriction sites, and an 11,429 bp linear map." />
+          </div>
+          <figcaption>motif_FPS_crtE.html · Inventory · Sequence · Map</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">04</span>
+          <div class="session__caption">
+            <h3>Add homologs in the same conversation</h3>
+            <p>Claude retrieves two more crtE and two more FPS homologs from UniProt, then opens a new workbench with all six.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-add-homologs.webp" width="2000" height="1058" loading="lazy"
+                 alt="The Motif workbench grown to six records after a follow-up request: the two paper genes as DNA plus four UniProt protein homologs (BTS1, crtE, ERG20, FPS)." />
+          </div>
+          <figcaption>6 sequences · 2 from the paper + 4 from UniProt</figcaption>
+        </figure>
+      </li>
+      <li class="session__step reveal">
+        <div class="session__meta">
+          <span class="session__num" aria-hidden="true">05</span>
+          <div class="session__caption">
+            <h3>Align all six</h3>
+            <p>Ask for a multiple sequence alignment. Claude Science runs Clustal Omega, and the alignment opens in Motif.</p>
+          </div>
+        </div>
+        <figure class="figure screenshot-window">
+          <div class="screenshot-window__bar" aria-hidden="true"></div>
+          <div class="screenshot-window__image">
+            <img src="assets/shots/claude-science-msa-result.webp" width="2000" height="1142" loading="lazy"
+                 alt="Motif's MSA viewer showing a six-protein Clustal Omega alignment: 6 rows, 440 columns, with per-row identity, consensus, and conserved-column shading." />
+          </div>
+          <figcaption>6 rows · 440 columns · Clustal Omega 1.2.4</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ SETUP HELP (FAQ) ============================ -->
+<section class="section section--tight" id="setup-help" aria-labelledby="sh-h">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">If setup gets stuck</span>
+      <h2 id="sh-h">Common problems and their fixes.</h2>
+      <p class="lead">Most setup problems come from Claude Science's sandbox blocking the Motif folder. The <a href="https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_TROUBLESHOOTING.md">troubleshooting guide</a> covers the rest.</p>
+    </div>
+    <div class="faq reveal">
+      <details class="faq__item">
+        <summary>“Operation not permitted,” or the tools won't load</summary>
+        <div class="faq__body">Claude Science's sandbox is blocking the folder. Open Permissions in Claude Science and grant the exact Motif folder, then fully quit and reopen the app. Reconnect alone does not apply a new grant.</div>
+      </details>
+      <details class="faq__item">
+        <summary>The tool ran, but no workbench appeared</summary>
+        <div class="faq__body">A text summary or resource link means the tool ran but no workbench was mounted. Ask Claude to create a Motif workbench artifact — for example, “please open this in the Motif workbench” — and Claude generates an HTML artifact that opens in the right pane.</div>
+      </details>
+      <details class="faq__item">
+        <summary>The sequence shows as plain text</summary>
+        <div class="faq__body">This is Claude Science's generic fallback display. Open the generated workbench artifact to see the sequence rendered.</div>
+      </details>
+      <details class="faq__item">
+        <summary>The connector shows up, but its tools are missing</summary>
+        <div class="faq__body">Rebuild, then reconnect the existing <span class="mono">motif-local</span> entry rather than adding a new one. If a tool's inputs or schema changed, relaunch Claude Science and start a fresh kernel so the new definition loads.</div>
+      </details>
+      <details class="faq__item">
+        <summary>Node installed through nvm or asdf gets denied</summary>
+        <div class="faq__body">A Node binary inside a version manager is often outside the granted folder. Use a system or Homebrew Node 22.12+, or grant that Node's folder and rerun setup with its path. The troubleshooting guide shows the command.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CLOSER ============================ -->
+<section class="section closer">
+  <div class="container">
+    <div class="closer__box reveal">
+      <h2>Open Motif in Claude Science.</h2>
+      <p>Load a plasmid, inspect the maps and digests Claude builds, and ask for the next analysis.</p>
+      <div class="closer__cta">
+        <a class="btn btn--primary" href="#setup">Set up in Claude Science</a>
+        <a class="btn btn--ghost" href="https://github.com/jvogan/motif">Read the docs on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brandcol">
+      <a class="brand" href="#top" aria-label="Motif home">
+        <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <path d="M12.09 47.35 A38 38 0 0 1 46.03 12.21" stroke="#C0603C" stroke-width="11" stroke-linecap="round"/>
+          <path d="M61.74 13.86 A38 38 0 0 1 87.17 57.90" stroke="#7F9270" stroke-width="11" stroke-linecap="round"/>
+          <path d="M79.94 73.40 A38 38 0 0 1 40.81 86.87" stroke="#C0603C" stroke-width="11" stroke-linecap="round"/>
+          <path d="M25.57 79.11 A38 38 0 0 1 14.29 63.00" stroke="#C79A44" stroke-width="11" stroke-linecap="round"/>
+        </svg>
+        Motif
+      </a>
+      <p class="footer__tag">A molecular-biology workbench for Claude Science. Sequence functions run locally and deterministically.</p>
+    </div>
+    <div class="footer__col">
+      <h5>Product</h5>
+      <a href="#promo">Watch</a>
+      <a href="#session">Worked example</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#setup">Get started</a>
+    </div>
+    <div class="footer__col">
+      <h5>Project</h5>
+      <a href="https://github.com/jvogan/motif">GitHub</a>
+      <a href="https://github.com/jvogan/motif#readme">Documentation</a>
+      <a href="https://github.com/jvogan/motif/blob/main/LICENSE">MIT License</a>
+    </div>
+  </div>
+  <div class="container footer__legal">
+    <p>Motif is an independent, community-built plugin. It is not affiliated with, sponsored by, or endorsed by Anthropic. “Claude” and “Claude Science” are trademarks of Anthropic. The banner and mascot illustrations are original artwork. Motif is a research and design tool, not a clinical or diagnostic device.</p>
+    <span class="mono">© 2026 · MIT</span>
+  </div>
+</footer>
+
+<script src="js/components/ambient.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
