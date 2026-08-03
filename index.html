@@ -27,6 +27,70 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Structured data — SoftwareApplication + WebSite, linked to the
+       author via a stable Person @id for identity resolution. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://jvogan.github.io/motif-site/#software",
+        "name": "Motif",
+        "url": "https://jvogan.github.io/motif-site/",
+        "description": "Motif is a molecular-biology workbench that runs inside Claude Science. Open sequence records, annotate them, align them, translate them, screen restriction enzymes, design primers and guides, and export GenBank or a self-contained workspace file. Open source, MIT-licensed, and it runs in your browser.",
+        "applicationCategory": "ScienceApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+        "runtimePlatform": "Claude Science",
+        "license": "https://github.com/jvogan/motif/blob/main/LICENSE",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "installUrl": "https://github.com/jvogan/motif",
+        "author": { "@id": "https://jvogan.github.io/#person" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://jvogan.github.io/motif-site/#website",
+        "url": "https://jvogan.github.io/motif-site/",
+        "name": "Motif",
+        "description": "Ask Claude Science for sequence work, and Motif opens the records, maps, and analyses in the pane beside the chat. Runs in your browser, MIT-licensed.",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://jvogan.github.io/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://jvogan.github.io/#person",
+        "name": "Jacob Vogan",
+        "alternateName": "jvogan",
+        "url": "https://jvogan.github.io/",
+        "image": "https://github.com/jvogan.png?size=480",
+        "description": "Builds AI tools for biological research — agentic systems for bioinformatics, structural biology, biomanufacturing, and automated labs.",
+        "knowsAbout": [
+          "Bioinformatics",
+          "Structural biology",
+          "Biomanufacturing",
+          "Automated laboratory systems",
+          "AI agents",
+          "Agent orchestration",
+          "Local speech (TTS, ASR)",
+          "Long-horizon agentic workflows"
+        ],
+        "sameAs": [
+          "https://github.com/jvogan",
+          "https://huggingface.co/JacobMolBio",
+          "https://x.com/jacobmolbio",
+          "https://houseofvogan.com/"
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
