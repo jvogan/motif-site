@@ -61,7 +61,8 @@
   box-sizing: border-box;
 }
 
-/* The demo section ships with the hidden attribute; no display rule may override it. */
+/* Elements that ship with the hidden attribute, such as the Copy buttons
+   before JS runs, stay hidden; no display rule may override it. */
 [hidden] {
   display: none !important;
 }
@@ -443,6 +444,11 @@ h1 {
   background: var(--surface);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius);
+}
+
+/* On the light band the grey box would almost disappear, so it turns white like the cards. */
+.section--band .prompt__box {
+  background: var(--bg);
 }
 
 .prompt__text {
@@ -897,6 +903,11 @@ h1 {
 .shot__frame img,
 .shot__frame video {
   width: 100%;
+}
+
+/* The same gap under the lead as the examples and the feature list. */
+.shot--video {
+  margin-top: 40px;
 }
 
 .shot figcaption {

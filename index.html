@@ -123,6 +123,7 @@
         <li class="site-nav__wide"><a href="#benefits">Why Motif</a></li>
         <li class="site-nav__wide"><a href="#examples">Examples</a></li>
         <li class="site-nav__wide"><a href="#features">Features</a></li>
+        <li class="site-nav__wide"><a href="#demo">Demo</a></li>
         <li><a href="#start">Get started</a></li>
         <li><a href="https://github.com/jvogan/motif">GitHub</a></li>
       </ul>
@@ -364,31 +365,25 @@
     </div>
   </section>
 
-  <!-- DEMO VIDEO SLOT. A new recording is in progress. To publish it:
-       1. Add assets/video/motif-demo.mp4 and assets/video/motif-demo-poster.jpg (1920x1080).
-       2. Set the caption's duration.
-       3. Move this <section> out of its <template> wrapper and remove its `hidden` attribute.
-       The <template> keeps the browser from requesting the video files before they exist.
-       4. Add a "Demo" link (#demo) to the nav. -->
-  <template id="demo-slot">
-  <section class="section" id="demo" aria-labelledby="demo-title" hidden>
-    <div class="wrap">
+  <!-- The film is 1920x1080 and 15.8 MB, with its index at the start of the
+       file so it streams. preload="none" keeps the page from fetching any of
+       it until the visitor presses play; the poster fills the frame. -->
+  <section class="section" id="demo" aria-labelledby="demo-title" style="--rule: var(--sage)">
+    <div class="wrap reveal">
       <h2 id="demo-title">See it in Claude Science</h2>
-      <p class="section__lead">Claude Science fetches records and opens them in Motif in the pane beside the chat.</p>
+      <p class="section__lead">Claude Science fetches human KRAS, four GFP color variants, and pUC19 from two requests and opens them in Motif beside the chat. The rest of the film is work in Motif: a translation, DNA and protein alignments of the GFPs, a digest of pUC19, and a GenBank export.</p>
       <figure class="shot shot--video">
         <div class="shot__frame">
-          <video controls preload="metadata" playsinline poster="assets/video/motif-demo-poster.jpg" width="1920" height="1080">
+          <video controls preload="none" playsinline poster="assets/video/motif-demo-poster.jpg" width="1920" height="1080">
             <source src="assets/video/motif-demo.mp4" type="video/mp4" />
             <p>Your browser cannot play this video. <a href="assets/video/motif-demo.mp4">Download the MP4 file</a>.</p>
           </video>
         </div>
-        <figcaption>A Claude Science session · DURATION, with voiceover</figcaption>
       </figure>
     </div>
   </section>
-  </template>
 
-  <section class="section" id="start" aria-labelledby="start-title" style="--rule: var(--rust)">
+  <section class="section section--band" id="start" aria-labelledby="start-title" style="--rule: var(--rust)">
     <div class="wrap reveal">
       <h2 id="start-title">Get started</h2>
       <p class="prose">Any agent that can run commands on your computer can set Motif up from this prompt:</p>

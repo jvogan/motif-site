@@ -46,15 +46,11 @@ Open <http://localhost:4178>.
 | `assets/img/og.png` | Social preview image, 1280x640 |
 | `assets/img/favicon.svg` | Logo mark |
 | `assets/mascot/crab.webp` | Footer mascot |
-| `assets/video/` | Empty until the demo video is added |
+| `assets/video/` | The demo film (H.264 MP4, 1920x1080) and its poster frame |
 
-## Publish the demo video
+## Demo video
 
-`index.html` holds a demo-video section, `<section id="demo">`, inside
-`<template id="demo-slot">`, so the browser neither shows it nor requests its
-files. The HTML comment directly above the template lists the steps to
-publish the video.
-
+The page fetches the video only when the visitor presses play.
 `python3 -m http.server` answers a Range request with the whole file, so the
 video plays locally but does not seek. GitHub Pages answers Range requests
 with `206 Partial Content`, and seeking works there.
