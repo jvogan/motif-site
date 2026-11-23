@@ -1,105 +1,63 @@
 <div align="center">
 
-<img src="assets/img/favicon.svg" width="72" alt="Motif" />
+<img src="assets/img/favicon.svg" width="72" alt="Motif logo" />
 
 # Motif
 
-**A molecular-biology workbench for Claude Science.**
-
-Plasmid maps, restriction digests, primer design, and assembly plans,
-in a workbench you can open and read base by base.
-Runs in your browser, with no Motif-hosted backend.
+A molecular-biology workbench for you and your AI agent.
 
 [Live site](https://jvogan.github.io/motif-site/) ·
-[Source and installation](https://github.com/jvogan/motif) ·
-[Current capabilities](https://github.com/jvogan/motif/blob/main/docs/CAPABILITIES.md) ·
-[Security](https://github.com/jvogan/motif/blob/main/SECURITY.md)
-
-<img src="assets/img/hero-workbench.webp" width="860" alt="The Motif workbench: a sequence inventory, a nucleotide sequence pane, and a circular pUC19 plasmid map, in sync." />
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-C0603C.svg)](LICENSE)
-&nbsp;![Claude Science plugin](https://img.shields.io/badge/Claude_Science-plugin-262624)
-&nbsp;![Runs in your browser](https://img.shields.io/badge/runs-in--browser-7F9270)
+[Source repository](https://github.com/jvogan/motif) ·
+[Capability reference](https://github.com/jvogan/motif/blob/main/docs/CAPABILITIES.md)
 
 </div>
 
 ---
 
-## Why Motif
+Motif runs in your browser as one HTML file, and Codex or Claude Science can
+open it for you with your records loaded. This repository holds the landing
+page at <https://jvogan.github.io/motif-site/>. The workbench source, the
+connectors, and the setup guides are in
+[jvogan/motif](https://github.com/jvogan/motif).
 
-Ask Claude Science for sequence work, and Motif opens the result as a record you
-can read base by base.
+## Run the page locally
 
-- **Every step produces a record.** A map, a digest, a translated protein — each
-  one opens in the workbench.
-- **It runs in your browser.** The workbench is a single self-contained file, and
-  Motif has no hosted service. What you give Claude Science stays under your
-  Claude and organization data policies.
-- **Records keep their parent.** A derived record stores where it came from and
-  the transform that made it, so you can trace a protein back to its bases.
-
-## What's in the workbench
-
-| Read & inspect | Cut & clone | Analyze | Transform |
-| --- | --- | --- | --- |
-| Circular & linear maps | Restriction digest (154 enzymes) | Six-frame ORF detection | Translation |
-| Feature annotations | Primer design (Tm / GC) | NCBI genetic-code selection | Reverse complement |
-| Reading-frame overlays | Gibson & Golden Gate | Browser MSA | Derived protein records |
-| Live GC & length stats | PCR simulation | IUPAC motif search | Parent & provenance notes |
-
-Import and export FASTA, GenBank, and raw sequence. Restore a workspace from its
-database JSON, or hand one off as a ZIP or a self-contained HTML file.
-
-## Try it
-
-Build the current workbench from the public source repository:
-
-```bash
-git clone https://github.com/jvogan/motif.git
-cd motif
-npm ci
-npm run preview:motif
-```
-
-Open `preview/motif-artifact.html`. For Claude Science connector setup and the
-public synthetic smoke record, follow the
-[installation guide](https://github.com/jvogan/motif/blob/main/docs/CLAUDE_SCIENCE_QUICKSTART.md).
-
-<div align="center">
-<img src="assets/mascot/crab.webp" width="120" alt="Motif's lab-crab mascot" />
-
-*Paste one of these after opening a Motif workbench:*
-</div>
-
-- `Open pUC19 and highlight the unique cutters.` → a map with single-cut enzymes flagged
-- `Translate the lacZα region and save it as a protein.` → a protein record, parent recorded
-- `Design primers to amplify the MCS, about 250 bp.` → a primer pair with Tm, GC, product size
-- `Plan a Golden Gate assembly and flag internal BsaI sites.` → an ordered plan, Type IIS conflicts called out
-
-## Run the landing page locally
-
-This repo is the Motif landing site. It is static and has no build step; the
-product source and distributable build live in `jvogan/motif`.
+The page is static HTML and CSS, plus `js/site.js` for the Copy buttons,
+the example tabs, and the scroll reveal. It has no build step. Without
+JavaScript the Copy buttons stay hidden, the prompt text stays selectable,
+every example shows with its request and screenshot, and the load and
+scroll animations do not run. All motion stops when the reader's system
+asks for reduced motion.
 
 ```bash
 python3 -m http.server 4178
-# open http://localhost:4178
 ```
 
-`http.server` answers a Range request with the whole file, so the embedded
-videos will not scrub locally. Any server that returns `206 Partial Content`
-restores seeking, as GitHub Pages does in production.
+Open <http://localhost:4178>.
 
-The page is GitHub Pages ready: `.nojekyll` and relative paths throughout. The
-plasmid map, codon translation, and ambient background are vanilla JS and honor
-`prefers-reduced-motion`.
+## Files
 
-## Scope
+| Path | Contents |
+| --- | --- |
+| `index.html` | The page, its meta tags, and its JSON-LD |
+| `css/styles.css` | All styles |
+| `js/site.js` | Copy buttons, example tabs, and scroll reveal |
+| `assets/shots/` | Workbench screenshots in WebP: the hero at 2000x1250, its phone crop at 780x1060, the examples at 2000x938 |
+| `assets/img/og.png` | Social preview image, 1280x640 |
+| `assets/img/favicon.svg` | Logo mark |
+| `assets/mascot/crab.webp` | Footer mascot |
+| `assets/video/` | Empty until the demo video is added |
 
-Motif prepares and inspects sequence records. It computes each analysis
-deterministically, shows the numbers behind it, flags likely mistakes such as
-internal cut sites and impossible geometry, and records where every derived
-record came from. Nothing it produces has been tested experimentally.
+## Publish the demo video
+
+`index.html` holds a demo-video section, `<section id="demo">`, inside
+`<template id="demo-slot">`, so the browser neither shows it nor requests its
+files. The HTML comment directly above the template lists the steps to
+publish the video.
+
+`python3 -m http.server` answers a Range request with the whole file, so the
+video plays locally but does not seek. GitHub Pages answers Range requests
+with `206 Partial Content`, and seeking works there.
 
 ## License
 
@@ -107,7 +65,4 @@ record came from. Nothing it produces has been tested experimentally.
 
 ---
 
-<sub>Motif is an independent, community-built plugin. It is **not** affiliated with,
-sponsored by, or endorsed by Anthropic. “Claude” and “Claude Science” are trademarks
-of Anthropic. Banner illustrations and the mascot are original artwork. Motif is a
-research and design tool, not a clinical or diagnostic device.</sub>
+<sub>Motif is an independent open-source project. It is not affiliated with, sponsored by, or endorsed by Anthropic or OpenAI. Claude, Claude Science, and Codex are trademarks of their respective owners. Motif is a research and design tool, not a clinical or diagnostic device.</sub>
